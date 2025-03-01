@@ -1,9 +1,5 @@
 using System.Collections;
-using Unity.Mathematics;
-using Unity.VisualScripting;
-using UnityEditor.Animations;
 using UnityEngine;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,8 +12,9 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask groundLayer;
+    [SerializeField] private Transform respawn;
     private float horizontal;
-    bool isGrounded;
+    //bool isGrounded;
 
     private bool canDash = true;
     private bool cdOn = true;
@@ -27,6 +24,11 @@ public class PlayerMovement : MonoBehaviour
     private float dashingCd = 1f;
     [SerializeField] private TrailRenderer tr;
     [SerializeField] private ParticleSystem dust;
+    [SerializeField] private ParticleSystem dustFuego;
+    [SerializeField] private ParticleSystem dustAgua;
+    [SerializeField] private ParticleSystem fuego;
+    [SerializeField] private ParticleSystem agua;
+    private bool isFire = true;
     //audio
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip salto;
@@ -38,6 +40,8 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
+        fuego.Stop();
+        agua.Stop();
     }
 
     // Update is called once per frame
@@ -46,18 +50,32 @@ public class PlayerMovement : MonoBehaviour
 
         if (isDashing)
         {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                ChangeParticles();
+            }
             return;
+
+        }
+
+        if (IsGrounded())
+        {
+            jumpCount = 0;
+            canDash = true;
+            if (rb.linearVelocity.y <= 0f) // Solo cambiar a false si está cayendo o en el suelo
+            {
+                animator.SetBool("isJumping", false);
+            }
         }
 
         if (CameraMovement.isManualMode) return;
         horizontal = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && jumpCount < maxJump)
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded() && jumpCount < maxJump)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            isGrounded = false;
+            animator.SetBool("isJumping", true);
             audioSource.PlayOneShot(salto);
-            animator.SetBool("isJumping", !isGrounded);
             CreateDust();
            
         }
@@ -67,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             audioSource.PlayOneShot(salto);
             jumpCount++;
-            animator.SetBool("isJumping", !isGrounded);
+            animator.SetBool("isJumping", !IsGrounded());
 
         }
         if (Input.GetKeyUp(KeyCode.Space) && rb.linearVelocity.y > 0f )  //Codigo para q salte mas si lo mantienes
@@ -78,6 +96,11 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && cdOn)
         {
             StartCoroutine(Dash());
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            ChangeParticles();
         }
 
         flip();
@@ -120,16 +143,31 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        isGrounded = true;
-        canDash = true;
-        animator.SetBool("isJumping", !isGrounded);
-        jumpCount = 0;
+
         Debug.Log("Triggerea");  
+
+        if (collision.CompareTag("Fire"))
+        {
+            if (!isFire) RespawnPlayer();
+            else StartCoroutine(SpawnFire());
+        }
+
+        if (collision.CompareTag("Agua"))
+        {
+            if (isFire) RespawnPlayer();
+            else StartCoroutine(SpawnWater());
+        }
+    }
+
+    private void RespawnPlayer()
+    {
+        rb.transform.position = respawn.transform.position;
+        rb.linearVelocity = Vector2.zero;
     }
 
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.3f, groundLayer);
+        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
 
     private IEnumerator Dash()
@@ -150,10 +188,40 @@ public class PlayerMovement : MonoBehaviour
         cdOn = true;
     }
 
+    private IEnumerator SpawnFire()
+    {
+        dustFuego.Play();
+        yield return new WaitForSeconds(0.5f);
+        dustFuego.Stop();
+    }
+    private IEnumerator SpawnWater()
+    {
+        dustAgua.Play();
+        yield return new WaitForSeconds(0.5f);
+        dustAgua.Stop();
+    }
+
     void CreateDust()
     {
         dust.Play();
     }
+
+    private void ChangeParticles()
+    {
+        if (isFire == true)
+        {
+            fuego.Stop();
+            agua.Play();
+        } else
+        {
+            agua.Stop();
+            fuego.Play();
+        }
+
+        isFire = !isFire;
+    }
+
     
+
 
 }
