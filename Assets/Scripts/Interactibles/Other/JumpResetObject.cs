@@ -4,10 +4,13 @@ public class JumpResetObject : MonoBehaviour
 {
     private bool canUse = true;
     [SerializeField] private float cd;
-    void Start()
-    {
-        
-    }
+    private LightOscile lightOscile;
+     
+    void Awake()
+     {
+     lightOscile = GetComponent<LightOscile>();
+     }
+
 
     // Update is called once per frame
     void Update()
@@ -22,6 +25,7 @@ public class JumpResetObject : MonoBehaviour
             if (player != null)
             {
                 player.ResetJump();
+                lightOscile.FadelightFunc();
                 canUse = false;
                 Invoke(nameof(ResetUse), cd);
             }
@@ -29,7 +33,19 @@ public class JumpResetObject : MonoBehaviour
 
     }
 
+    private void OnTriggerExit2D(Collider2D collision) {
+        if (collision.CompareTag("Player") && !canUse)
+        {
+            PlayerMovement player = collision.GetComponent<PlayerMovement>();
+            if (player != null) {
+                player.unResetJump();
+            }
+        }
+
+    }
+
     private void ResetUse() {
+        lightOscile.FadeInLightFunc();
         canUse = true;
         Debug.Log("Jump reset object is ready to use again.");
     }

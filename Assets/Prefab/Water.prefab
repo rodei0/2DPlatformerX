@@ -127,8 +127,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorA: {r: 0.29411766, g: 0.6117647, b: 0.7607844, a: 1}
   colorB: {r: 0.5254902, g: 0.8431373, b: 0.94117653, a: 1}
-  intensityA: 0.5
-  intensityB: 1
+  intensityA: 0.3
+  intensityB: 0.6
 --- !u!114 &3598332395253525287
 MonoBehaviour:
   m_ObjectHideFlags: 0

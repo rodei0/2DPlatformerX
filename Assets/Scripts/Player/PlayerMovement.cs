@@ -27,13 +27,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Animator bodyAnim;
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask groundLayer;
-    [SerializeField] private Transform respawn;
+    
 
     [Header("Script References:")]
     PlayerStateList pState;
     public PlayerControls playerControls;
     private DashGhost dashGhost;
-    private Coroutine dashCoroutine;
+    public Coroutine dashCoroutine;
+    private PlayerManagement playerManagement;
 
     [Header("Dash variables:")]
     private bool canDash = true;
@@ -55,11 +56,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private ParticleSystem dustAgua;
     [SerializeField] private ParticleSystem fuego;
     [SerializeField] private ParticleSystem agua;
-    [SerializeField] private Color actualColor;
-
-    [Header("Audio:")]
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip salto;
 
     #endregion
 
@@ -84,11 +80,10 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         //sr = GetComponent<SpriteRenderer>(); reemplazado por 2 sprites
+        playerManagement = GetComponent<PlayerManagement>();
         pState = GetComponent<PlayerStateList>();
         rb = GetComponent<Rigidbody2D>();
-        actualColor = srBody.color;
         dashGhost = rb.GetComponent<DashGhost>();
-        audioSource = GetComponent<AudioSource>();
         //animator = GetComponent<Animator>(); reemplazado por 2 anims para cabeza y cuerpo, por lo que se asignan manualmente en el inspector
         defaultGravity = rb.gravityScale;
         fuego.Stop();
@@ -115,11 +110,6 @@ public class PlayerMovement : MonoBehaviour
             canDoubleJump = false;
         }
 
-
-            //if (isDashing)
-            //{
-            //    return;
-            //}
 
             if (CameraMovement.isManualMode) return;
 
@@ -166,13 +156,13 @@ public class PlayerMovement : MonoBehaviour
 
         if (collision.CompareTag("Fire"))
         {
-            if (!isFire) StartCoroutine(PlayerDead());
+            if (!isFire) playerManagement.KillPlayer();
             else StartCoroutine(SpawnFire());
         }
 
         if (collision.CompareTag("Agua"))
         {
-            if (isFire) StartCoroutine(PlayerDead());
+            if (isFire) playerManagement.KillPlayer();
             else StartCoroutine(SpawnWater());
         }
 
@@ -218,7 +208,7 @@ public class PlayerMovement : MonoBehaviour
                 jumpBufferCounter = 0;
             }
         }
-        /*if (Input.GetKeyDown(KeyCode.Space) && !IsGrounded() && jumpCount < maxJump)
+        /*if (Input.GetKeyDown(KeyCode.Space) && !IsGrounded() && jumpCount < maxJump) //esto es para doble salto (era)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             audioSource.PlayOneShot(salto);
@@ -267,6 +257,21 @@ public class PlayerMovement : MonoBehaviour
     public void ResetJump() 
     {
         canDoubleJump = true;
+    }
+
+    public void unResetJump()
+    {
+        canDoubleJump = false;
+    }
+
+    public void DisableControls() 
+    {
+        playerControls.Disable();
+    }
+
+    public void EnableControls() 
+    {
+        playerControls.Enable();
     }
     private void Flip()
     {
@@ -344,6 +349,18 @@ public class PlayerMovement : MonoBehaviour
         StartCoroutine(HitStop());
     }
 
+    public void ResetDashState() //funcion que se llamará desde playerManagement
+    {
+        if (dashCoroutine != null) {
+            StopCoroutine(dashCoroutine);
+            dashCoroutine = null;
+        }
+
+        gravityStored = false;
+        isDashing = false;
+        canDash = true;
+        cdOn = true;
+    }
 
     private IEnumerator HitStop() //efecto que relentiza el tiempo al tocar el resetdash para notar mas el impacto y poder dashear mas comfy
     {
@@ -397,7 +414,6 @@ public class PlayerMovement : MonoBehaviour
         Color start = srBody.color;
         tr.startColor = color;
         float elapsed = 0f;
-
         while (elapsed < duration)
         {
             tr.startColor = Color.Lerp(start, color, elapsed / duration);
@@ -408,7 +424,7 @@ public class PlayerMovement : MonoBehaviour
         }
         srBody.color = color;
         srHead.color = color;
-        actualColor = srBody.color;
+        playerManagement.actualColor = srBody.color;
     }
 
         
@@ -432,8 +448,8 @@ public class PlayerMovement : MonoBehaviour
 
     #endregion
 
-    #region Other
-    private void RespawnPlayer()
+    //#region Other
+    /*private void RespawnPlayer()
     {
         rb.transform.position = respawn.transform.position;
         rb.linearVelocity = Vector2.zero;
@@ -479,7 +495,7 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    #endregion  
+    #endregion  */
 
 
 }
