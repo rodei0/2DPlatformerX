@@ -54,7 +54,7 @@ public class LightOscile : MonoBehaviour
         StartCoroutine(FadeLight());
     }
 
-    public void FadeInLightFunc() {
-        StartCoroutine(FadeInLight());
+    public IEnumerator FadeInLightFunc() {
+        return FadeInLight();
     }
 }

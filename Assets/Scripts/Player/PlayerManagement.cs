@@ -5,7 +5,6 @@ public class PlayerManagement : MonoBehaviour
 {
     [Header("Components")]
     private Rigidbody2D rb;
-    private TrailRenderer tr;
     [SerializeField] private Transform respawn;
     [SerializeField] private SpriteRenderer srBody;
     [SerializeField] private SpriteRenderer srHead;
@@ -20,7 +19,6 @@ public class PlayerManagement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         playerMovement = GetComponent<PlayerMovement>();
         dashGhost = GetComponent<DashGhost>();
-        tr = GetComponent<TrailRenderer>();
         actualColor = srBody.color;
         defaultGravity = rb.gravityScale;
     }
@@ -35,8 +33,9 @@ public class PlayerManagement : MonoBehaviour
     }
     private IEnumerator PlayerDead() {
         playerMovement.ResetDashState();
-        tr.emitting = false;
         dashGhost.StopSpawning();
+
+        CameraShake.Instance.Shake(0.10f, 0.5f);
 
         playerMovement.DisableControls(); // Desactiva temporalmente los controles
         rb.gravityScale = 0f; // Detiene la física

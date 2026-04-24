@@ -20,6 +20,7 @@ public class DashResetObject : MonoBehaviour
     public void OnEnter()
     {
         animator.SetBool("isTouched", true);
+        CameraShake.Instance.Shake(0.04f, 0.15f);
         StartCoroutine(DashResetCd());
         lightOscile.FadelightFunc();
     }
@@ -28,7 +29,7 @@ public class DashResetObject : MonoBehaviour
         canUse = false;
         yield return new WaitForSeconds(useCd);
         animator.SetBool("isTouched", false);
-        lightOscile.FadeInLightFunc();
+        yield return StartCoroutine(lightOscile.FadeInLightFunc());
         canUse = true;
     }
 }

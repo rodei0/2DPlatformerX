@@ -10,25 +10,25 @@ public class FireWaterScript : MonoBehaviour
 
     new Light2D light;
 
-    void Start()
+    private void Start()
     {
         light = GetComponent<Light2D>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         OscileBetween2Colors();
         OscilebetweenIntensities();
     }
 
-    void OscileBetween2Colors()
+    private void OscileBetween2Colors()
     {
         float t = Mathf.PingPong(Time.time, 1f);
         light.color = Color.Lerp(colorA, colorB, t);
     }
 
-    void OscilebetweenIntensities()
+    private void OscilebetweenIntensities()
     {
         
         float t = Mathf.PingPong(Time.time, 1f);

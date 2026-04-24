@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class JumpResetObject : MonoBehaviour
@@ -27,7 +28,7 @@ public class JumpResetObject : MonoBehaviour
                 player.ResetJump();
                 lightOscile.FadelightFunc();
                 canUse = false;
-                Invoke(nameof(ResetUse), cd);
+                StartCoroutine(ResetUse());
             }
         }
 
@@ -44,8 +45,11 @@ public class JumpResetObject : MonoBehaviour
 
     }
 
-    private void ResetUse() {
-        lightOscile.FadeInLightFunc();
+    private IEnumerator ResetUse() {
+        yield return new WaitForSeconds(cd);
+
+        yield return StartCoroutine(lightOscile.FadeInLightFunc());
+
         canUse = true;
         Debug.Log("Jump reset object is ready to use again.");
     }

@@ -132,11 +132,11 @@ GameObject:
   - component: {fileID: 4025343}
   - component: {fileID: 4025342}
   - component: {fileID: 4025347}
+  - component: {fileID: 4025348}
   - component: {fileID: 4025340}
   - component: {fileID: 4025339}
   - component: {fileID: 4025338}
   - component: {fileID: 4025337}
-  - component: {fileID: 4025336}
   - component: {fileID: 4025346}
   m_Layer: 6
   m_Name: Player
@@ -145,122 +145,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!96 &4025336
-TrailRenderer:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4025335}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 0
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: -1
-  m_Time: 0.5
-  m_PreviewTimeScale: 1
-  m_Parameters:
-    serializedVersion: 3
-    widthMultiplier: 1.5
-    widthCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0.007245659
-        value: 0.03208556
-        inSlope: 1.8643453
-        outSlope: 1.8643453
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0.095237985
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    colorGradient:
-      serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 0.38039216}
-      key2: {r: 0, g: 0, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 0
-      ctime1: 65535
-      ctime2: 0
-      ctime3: 0
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
-      atime0: 0
-      atime1: 24094
-      atime2: 65535
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 0
-      m_ColorSpace: 0
-      m_NumColorKeys: 2
-      m_NumAlphaKeys: 3
-    numCornerVertices: 0
-    numCapVertices: 0
-    alignment: 0
-    textureMode: 1
-    textureScale: {x: 1, y: 1}
-    shadowBias: 0.5
-    generateLightingData: 0
-  m_MinVertexDistance: 0.1
-  m_MaskInteraction: 0
-  m_Autodestruct: 0
-  m_Emitting: 1
-  m_ApplyActiveColorSpace: 1
 --- !u!70 &4025337
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -439,12 +323,6 @@ MonoBehaviour:
   dashingPower: 14
   dashingTime: 0.2
   dashingCd: 0.02
-  tr: {fileID: 4025336}
-  dust: {fileID: 1736075686}
-  dustFuego: {fileID: 1997746568}
-  dustAgua: {fileID: 258047864}
-  fuego: {fileID: 105043824}
-  agua: {fileID: 2086702426}
 --- !u!114 &4025344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -552,6 +430,25 @@ MonoBehaviour:
   srBody: {fileID: 1102609589}
   srHead: {fileID: 801763854}
   actualColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &4025348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4025335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c6da9eed42a5f946bdea0e4e00cdafa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dust: {fileID: 1736075686}
+  dustFuego: {fileID: 1997746568}
+  dustAgua: {fileID: 258047864}
+  fuego: {fileID: 105043824}
+  agua: {fileID: 2086702426}
+  srBody: {fileID: 1102609589}
+  srHead: {fileID: 801763854}
 --- !u!1 &41340377
 GameObject:
   m_ObjectHideFlags: 0
@@ -20078,6 +19975,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420034}
+  - component: {fileID: 519420036}
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
   - component: {fileID: 519420035}
@@ -20142,7 +20040,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.18239668, g: 0.16353685, b: 0.1981132, a: 0}
+  m_BackGroundColor: {r: 0.28852138, g: 0.246618, b: 0.3207547, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -20250,6 +20148,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nonRigidbodyVelocity: 0
   attenuationObject: {fileID: 0}
+--- !u!114 &519420036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7e6ff3454da08b4a907dd8cf5d7543d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -20284,7 +20194,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.9
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
   m_ApplyToSortingLayers: 000000009b57363c090e248c
@@ -25689,12 +25599,6 @@ MonoBehaviour:
   dashingPower: 14
   dashingTime: 0.2
   dashingCd: 0.02
-  tr: {fileID: 1422102714}
-  dust: {fileID: 152602234}
-  dustFuego: {fileID: 1902528550}
-  dustAgua: {fileID: 323692393}
-  fuego: {fileID: 1597905648}
-  agua: {fileID: 661813843}
 --- !u!4 &1422102710
 Transform:
   m_ObjectHideFlags: 0
@@ -31482,6 +31386,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &1683538426 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5369900457046051121, guid: ffa5537d22f3a274fb8219ad7d40a6ea, type: 3}
+  m_PrefabInstance: {fileID: 6940103484377478189}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1683538435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683538426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bfb115693a4f854aa99e0be4c34741d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1684587230
 GameObject:
   m_ObjectHideFlags: 0
@@ -60543,11 +60464,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6759679200033189606, guid: 95e047b3e1c7d794199790e96ec6b129, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.94
+      value: 0.53
       objectReference: {fileID: 0}
     - target: {fileID: 6759679200033189606, guid: 95e047b3e1c7d794199790e96ec6b129, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.43
+      value: 4.56
       objectReference: {fileID: 0}
     - target: {fileID: 6759679200033189606, guid: 95e047b3e1c7d794199790e96ec6b129, type: 3}
       propertyPath: m_LocalPosition.z
@@ -60708,29 +60629,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2341574454456503600, guid: ffa5537d22f3a274fb8219ad7d40a6ea, type: 3}
-      propertyPath: m_Size.x
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 2341574454456503600, guid: ffa5537d22f3a274fb8219ad7d40a6ea, type: 3}
-      propertyPath: m_Size.y
-      value: 0.9375
-      objectReference: {fileID: 0}
-    - target: {fileID: 2341574454456503600, guid: ffa5537d22f3a274fb8219ad7d40a6ea, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -2977211539356113776, guid: 7293bf7effc4ae44c8dffebdaf46fd0a, type: 3}
-    - target: {fileID: 2341574454456503600, guid: ffa5537d22f3a274fb8219ad7d40a6ea, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2619723055808388295, guid: ffa5537d22f3a274fb8219ad7d40a6ea, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.62
+      value: 6.48
       objectReference: {fileID: 0}
     - target: {fileID: 2619723055808388295, guid: ffa5537d22f3a274fb8219ad7d40a6ea, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.47
+      value: 3.88
       objectReference: {fileID: 0}
     - target: {fileID: 2619723055808388295, guid: ffa5537d22f3a274fb8219ad7d40a6ea, type: 3}
       propertyPath: m_LocalPosition.z
@@ -60764,10 +60669,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2780748899921698281, guid: ffa5537d22f3a274fb8219ad7d40a6ea, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 5a46bcbefa7255b4996dc682c38bf0d2, type: 2}
     - target: {fileID: 5369900457046051121, guid: ffa5537d22f3a274fb8219ad7d40a6ea, type: 3}
       propertyPath: m_Name
       value: JumpResetOrb
@@ -60775,7 +60676,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5369900457046051121, guid: ffa5537d22f3a274fb8219ad7d40a6ea, type: 3}
+      insertIndex: 5
+      addedObject: {fileID: 1683538435}
   m_SourcePrefab: {fileID: 100100000, guid: ffa5537d22f3a274fb8219ad7d40a6ea, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

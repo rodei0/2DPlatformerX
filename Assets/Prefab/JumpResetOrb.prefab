@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 2619723055808388295}
   - component: {fileID: 2341574454456503600}
   - component: {fileID: 1776058059881733778}
+  - component: {fileID: 8880070467273814505}
+  - component: {fileID: 2727513729737661956}
   - component: {fileID: 7538219162561255821}
   - component: {fileID: 2780748899921698281}
-  - component: {fileID: 8880070467273814505}
   - component: {fileID: 712064964944141520}
   m_Layer: 0
   m_Name: JumpResetOrb
@@ -81,12 +82,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6089280175310957134, guid: 8d624c3a52ed8f649aea24c5503e599a, type: 3}
+  m_Sprite: {fileID: -2977211539356113776, guid: 7293bf7effc4ae44c8dffebdaf46fd0a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.75, y: 0.9375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -105,6 +106,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cd: 2
+--- !u!114 &8880070467273814505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5369900457046051121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 168c3ecaeed15314491bbd766ead7243, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minIntensity: 2
+  maxIntensity: 2.5
+--- !u!114 &2727513729737661956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5369900457046051121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2a38ab46fb7ddb449af9b964a2ec6ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oscileSpeed: 4
+  amplitude: 0.05
 --- !u!61 &7538219162561255821
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -143,8 +172,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.625, y: 0.8125}
-    newSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 0.75, y: 0.9375}
+    newSize: {x: 0.75, y: 0.9375}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -161,7 +190,7 @@ Animator:
   m_GameObject: {fileID: 5369900457046051121}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: -9100729405994983322, guid: 8d624c3a52ed8f649aea24c5503e599a, type: 3}
+  m_Controller: {fileID: 9100000, guid: 5a46bcbefa7255b4996dc682c38bf0d2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -173,20 +202,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8880070467273814505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5369900457046051121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 168c3ecaeed15314491bbd766ead7243, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minIntensity: 2
-  maxIntensity: 2.5
 --- !u!114 &712064964944141520
 MonoBehaviour:
   m_ObjectHideFlags: 0
