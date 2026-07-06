@@ -9,6 +9,12 @@ public class FMODEvents : MonoBehaviour
     //[field: SerializeField] public EventReference landSFX { get; private set; }
     [field: SerializeField] public EventReference jumpSFX { get; private set; }
     [field: SerializeField] public EventReference dashSFX { get; private set; }
+    [field: SerializeField] public EventReference swapElementSFX { get; private set; }
+    [field: SerializeField] public EventReference hittedSFX { get; private set; }
+
+
+
+
 
 
 

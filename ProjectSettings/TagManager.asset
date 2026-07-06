@@ -8,6 +8,7 @@ TagManager:
   - Fire
   - Agua
   - DashReset
+  - Dead
   layers:
   - Default
   - TransparentFX

@@ -7,10 +7,13 @@ public class JumpResetObject : MonoBehaviour
     [SerializeField] private float cd;
     private LightOscile lightOscile;
      
-    void Awake()
-     {
-     lightOscile = GetComponent<LightOscile>();
-     }
+    private ParticlesEffect particlesEffect;
+    
+    private void Awake()
+    {
+        lightOscile = GetComponent<LightOscile>();
+        particlesEffect = GetComponent<ParticlesEffect>();
+    }
 
 
     // Update is called once per frame
@@ -27,6 +30,7 @@ public class JumpResetObject : MonoBehaviour
             {
                 player.ResetJump();
                 lightOscile.FadelightFunc();
+                particlesEffect.StopParticles();
                 canUse = false;
                 StartCoroutine(ResetUse());
             }
@@ -49,7 +53,7 @@ public class JumpResetObject : MonoBehaviour
         yield return new WaitForSeconds(cd);
 
         yield return StartCoroutine(lightOscile.FadeInLightFunc());
-
+        particlesEffect.ResumeParticles();
         canUse = true;
         Debug.Log("Jump reset object is ready to use again.");
     }

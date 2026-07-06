@@ -13,12 +13,16 @@ public class PlayerManagement : MonoBehaviour
 
     [Header("Player Scripts")]
     private PlayerMovement playerMovement;
+    private PlayerDash playerDash;
     private DashGhost dashGhost;
+    private PlayerStateList pState;
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         playerMovement = GetComponent<PlayerMovement>();
         dashGhost = GetComponent<DashGhost>();
+        pState = GetComponent<PlayerStateList>();
+        playerDash = GetComponent<PlayerDash>();
         actualColor = srBody.color;
         defaultGravity = rb.gravityScale;
     }
@@ -28,11 +32,11 @@ public class PlayerManagement : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
     }
 
-    public void KillPlayer() {
-        StartCoroutine(PlayerDead());
-    }
     private IEnumerator PlayerDead() {
-        playerMovement.ResetDashState();
+        AudioManager.Instance.StopAllSFX();
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.hittedSFX, transform.position);
+        pState.isDead = true;
+        playerDash.ResetDashState();
         dashGhost.StopSpawning();
 
         CameraShake.Instance.Shake(0.10f, 0.5f);
@@ -53,6 +57,7 @@ public class PlayerManagement : MonoBehaviour
         SetPlayerVisible(true);
         rb.gravityScale = defaultGravity;
         playerMovement.EnableControls();
+        pState.isDead = false;
         RespawnPlayer();
 
     }
@@ -61,5 +66,12 @@ public class PlayerManagement : MonoBehaviour
         Color color = visible ? actualColor : Color.clear;
         srBody.color = color;
         srHead.color = color;
+    }
+
+    public void SetActualColor(Color color) {
+        actualColor = color;
+    }
+    public void KillPlayer() {
+        StartCoroutine(PlayerDead());
     }
 }

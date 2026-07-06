@@ -73,6 +73,10 @@ public class AudioManager : MonoBehaviour
         musicInstance.start();
     }
 
+    public void StopAllSFX() {
+        sfxBus.stopAllEvents(FMOD.Studio.STOP_MODE.IMMEDIATE);
+    }
+
     public void Cleanup()
     {
         foreach (var instance in eventInstances)

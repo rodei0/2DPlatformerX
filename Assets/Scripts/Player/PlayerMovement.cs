@@ -7,21 +7,19 @@ public class PlayerMovement : MonoBehaviour
     [Header("Basic variables:")]
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
-    [SerializeField] private int maxJump;
-    private int jumpCount;
-    private bool canDoubleJump;
+    //[SerializeField] private int maxJump;
+    //private int jumpCount;
+    private bool hasExtraJump;
     private int jumpBufferCounter = 0;
+    [SerializeField] private float coyoteTime = 0.15f;
     [SerializeField] private int jumpBufferFrames;
     private float horizontal;
     private bool jumpReleased = false;
-    public bool isFacingRight = true;
+    public bool jumpResetting = false;
 
 
     [Header("Components:")]
-    [SerializeField] private SpriteRenderer srBody;
-    [SerializeField] private SpriteRenderer srHead;
     private Rigidbody2D rb;
-    //Animator animator;
     [SerializeField] private Animator headAnim;
     [SerializeField] private Animator bodyAnim;
     [SerializeField] Transform groundCheck;
@@ -29,25 +27,12 @@ public class PlayerMovement : MonoBehaviour
 
 
     [Header("Script References:")]
-    PlayerStateList pState;
-    public PlayerControls playerControls;
-    private DashGhost dashGhost;
-    public Coroutine dashCoroutine;
-    private PlayerManagement playerManagement;
+    private PlayerStateList pState;
     private PlayerVFX playerVFX;
+    public PlayerControls playerControls;
 
-    [Header("Dash variables:")]
-    private bool canDash = true;
-    private bool cdOn = true;
-    private bool isDashing;
-    private float originalGravity;
-    private float defaultGravity;
-    private bool gravityStored = false;
-    [SerializeField] private float dashingHorizontalMultiplier = 1f;
-    [SerializeField] private float dashingVerticalMultiplier = 0.4f;
-    [SerializeField] private float dashingPower = 20f;
-    [SerializeField] private float dashingTime = 0.2f;
-    [SerializeField] private float dashingCd = 0.2f;
+
+
 
 
     #endregion
@@ -71,12 +56,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Start() {
         //sr = GetComponent<SpriteRenderer>(); reemplazado por 2 sprites
-        playerManagement = GetComponent<PlayerManagement>();
         pState = GetComponent<PlayerStateList>();
         rb = GetComponent<Rigidbody2D>();
-        dashGhost = GetComponent<DashGhost>();
         //animator = GetComponent<Animator>(); reemplazado por 2 anims para cabeza y cuerpo, por lo que se asignan manualmente en el inspector
-        defaultGravity = rb.gravityScale;
         playerVFX = GetComponent<PlayerVFX>();
     }
 
@@ -84,28 +66,31 @@ public class PlayerMovement : MonoBehaviour
     void Update() {
 
         if (playerControls.Player.Jump.WasPressedThisFrame()) {
-            jumpBufferCounter = jumpBufferFrames;
+            if (hasExtraJump && !pState.isGrounded) {
+                Debug.Log("Double Jumping");
+                JumpDouble();
+                hasExtraJump = false;
+            }
+            else {
+                Debug.Log("Jump Button Pressed");
+                jumpBufferCounter = jumpBufferFrames;
+            }
         }
 
-        // Detect release in Update (frame-based) and store it for FixedUpdate physics handling.
+        // se detecta la liberación del botón de salto para el salto variable
         if (playerControls.Player.Jump.WasReleasedThisFrame()) {
             jumpReleased = true;
         }
 
-        if (playerControls.Player.Jump.WasPressedThisFrame() && canDoubleJump && !IsGrounded()) {
-            JumpDouble();
-            canDoubleJump = false;
-        }
+       //if (playerControls.Player.Jump.WasPressedThisFrame() && hasExtraJump && !pState.isGrounded) {
+       //    JumpDouble();
+       //    hasExtraJump = false;
+       //}
 
 
         if (CameraMovement.isManualMode) return;
 
         horizontal = Mathf.Round(playerControls.Player.Move.ReadValue<Vector2>().x);
-
-        if (playerControls.Player.Dash.WasPressedThisFrame() && canDash && cdOn) {
-
-            dashCoroutine = StartCoroutine(Dash());
-        }
 
         if (playerControls.Player.ChangeElement.WasPressedThisFrame()) {
             playerVFX.ChangeParticles();
@@ -118,10 +103,10 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        UpdateJumpVariables();
+        UpdateGroundVariables();
         Jump();
 
-        if (isDashing) {
+        if (pState.isDashing) {
             return;
         }
         rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
@@ -132,15 +117,7 @@ public class PlayerMovement : MonoBehaviour
         bodyAnim.SetFloat("yVelocity", rb.linearVelocity.y);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.CompareTag("DashReset") && !canDash) {
-            DashResetObject dashRobject = collision.GetComponent<DashResetObject>();
-            if (dashRobject.canUse) {
-                dashRobject.OnEnter();
-                FullDashReset();
-            }
-        }
-    }
+   
 
 
     #endregion
@@ -150,29 +127,32 @@ public class PlayerMovement : MonoBehaviour
 
         // salto variable, cuando el salto se suelta el personaje va hacia abajo mas rapido
         if (jumpReleased) {
-            if (rb.linearVelocity.y > 0f && !isDashing) {
+            if (rb.linearVelocity.y > 0f && !pState.isDashing) {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
             }
             // consume the release event
             jumpReleased = false;
         }
 
-        if (!pState.jumping && !isDashing) {
-            if (jumpBufferCounter > 0 && IsGrounded()) {
+        if (!pState.isJumping && !pState.isDashing) {
+            if (jumpBufferCounter > 0 && pState.coyoteCounter > 0) {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-                pState.jumping = true;
-
-                bodyAnim.SetBool("isJumping", true);
-                headAnim.SetBool("isJumping", true);
+                pState.coyoteCounter = 0;
+                pState.isJumping = true;
 
                 AudioManager.Instance.PlayOneShot(FMODEvents.Instance.jumpSFX, transform.position);
                 Debug.Log("Jumping");
                 playerVFX.CreateDust();
 
+                hasExtraJump = false;
                 jumpBufferCounter = 0;
             }
         }
-        /*if (Input.GetKeyDown(KeyCode.Space) && !IsGrounded() && jumpCount < maxJump) //esto es para doble salto (era)
+        bodyAnim.SetBool("isJumping", !pState.isGrounded);
+        headAnim.SetBool("isJumping", !pState.isGrounded);
+
+        /*
+         if (Input.GetKeyDown(KeyCode.Space) && !IsGrounded() && jumpCount < maxJump) //esto es para doble salto (era)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             audioSource.PlayOneShot(salto);
@@ -182,13 +162,13 @@ public class PlayerMovement : MonoBehaviour
         }
         */
 
-        bodyAnim.SetBool("isJumping", !IsGrounded());
-        headAnim.SetBool("isJumping", !IsGrounded());
     }
 
     private void JumpDouble() {
+        jumpResetting = true;
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-        pState.jumping = true;
+        pState.isJumping = true;
+        
 
         bodyAnim.SetBool("isJumping", true);
         headAnim.SetBool("isJumping", true);
@@ -199,27 +179,27 @@ public class PlayerMovement : MonoBehaviour
         jumpBufferCounter = 0;
     }
 
-    private void UpdateJumpVariables() {
-        bool grounded = IsGrounded();
+    private void UpdateGroundVariables() {
+        pState.isGrounded = IsGrounded();
 
         // Detect landing
-        if (grounded) {
-            pState.jumping = false;
-            if (!isDashing) {
-                canDash = true;
+        if (pState.isGrounded) {
+            Debug.Log("Grounded");
+            pState.isJumping = false;
+            pState.coyoteCounter = coyoteTime;
+            if (!pState.isDashing) {
+                pState.canDash = true;
             }
-        }
-        if (jumpBufferCounter > 0) {
-            jumpBufferCounter--;
-        }
+        } else { pState.coyoteCounter -= Time.fixedDeltaTime; }
+        if (jumpBufferCounter > 0) { jumpBufferCounter--;}
     }
 
     public void ResetJump() {
-        canDoubleJump = true;
+        hasExtraJump = true;
     }
 
     public void unResetJump() {
-        canDoubleJump = false;
+        hasExtraJump = false;
     }
 
     public void DisableControls() {
@@ -230,219 +210,19 @@ public class PlayerMovement : MonoBehaviour
         playerControls.Enable();
     }
     private void Flip() {
-        if ((isFacingRight && horizontal < 0f) || !isFacingRight && horizontal > 0f) {
-            isFacingRight = !isFacingRight;
+        if ((pState.isFacingRight && horizontal < 0f) || !pState.isFacingRight && horizontal > 0f) {
+            pState.isFacingRight = !pState.isFacingRight;
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
             transform.localScale = localScale;
         }
     }
     private bool IsGrounded() {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
-    }
+        if (rb.linearVelocity.y > 0.1f)
+            return false;
 
-    #endregion
-
-    #region Dash Methods
-
-    private IEnumerator Dash() //bro lo de hacer el dash y el reset de dash y que cuando dasheo con el reset de dash se buggea la gravedad q cancer es
-    {
-        if (!gravityStored) {
-            originalGravity = rb.gravityScale;
-            gravityStored = true;
-        }
-
-        float capturedX = DashLeftOrRight();
-        float capturedY = DashUpOrDown();
-        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.dashSFX, transform.position);
-        isDashing = true;
-        dashGhost.StartSpawning();
-        playerVFX.CreateDust();
-        canDash = false;
-        cdOn = false;
-
-
-        Debug.Log($"Dash START - originalGravity guardada: {originalGravity}, gravityScale actual: {rb.gravityScale}");
-        rb.gravityScale = 0f;
-
-        Vector2 rawDir = new Vector2(capturedX * dashingHorizontalMultiplier,
-                              capturedY * dashingVerticalMultiplier);
-
-        // Solo normalizar en diagonal para evitar que se sume potencia, 
-        // pero respetar los multiplicadores en ejes puros
-        Vector2 dashDir = (capturedX != 0 && capturedY != 0) ? rawDir.normalized * dashingPower
-                                                              : rawDir * dashingPower;
-
-        rb.linearVelocity = dashDir;
-
-        yield return new WaitForSeconds(dashingTime);
-        Debug.Log($"Dash END - restaurando gravedad a: {originalGravity}");
-
-        rb.gravityScale = originalGravity;
-        gravityStored = false;
-        isDashing = false;
-        dashGhost.StopSpawning();
-
-        yield return new WaitForSeconds(dashingCd);
-        cdOn = true;
-
-        if (IsGrounded()) {
-            canDash = true;
-        }
-    }
-
-    private void FullDashReset() {
-        canDash = true;
-        //cdOn = true; //no queremos que el dashreset reinicie el cd ya que ocurren bugs raros de dashear la nada, asi que hacemos que cuando vuelva el cd si se pueda dashear, god
-        StartCoroutine(HitStop());
-    }
-
-    public void ResetDashState() //funcion que se llamará desde playerManagement
-    {
-        if (dashCoroutine != null) {
-            StopCoroutine(dashCoroutine);
-            dashCoroutine = null;
-        }
-
-        gravityStored = false;
-        isDashing = false;
-        canDash = true;
-        cdOn = true;
-    }
-
-    private IEnumerator HitStop() //efecto que relentiza el tiempo al tocar el resetdash para notar mas el impacto y poder dashear mas comfy
-    {
-        Time.timeScale = 0.05f;
-        yield return new WaitForSecondsRealtime(0.06f);
-        Time.timeScale = 0.3f;
-        yield return new WaitForSecondsRealtime(0.04f);
-        Time.timeScale = 1f;
-    }
-
-    private float DashUpOrDown() {
-        Vector2 moveInput = playerControls.Player.Move.ReadValue<Vector2>();
-        return moveInput.y;
-    }
-
-    private float DashLeftOrRight() {
-        Vector2 moveInput = playerControls.Player.Move.ReadValue<Vector2>();
-        if (moveInput.x != 0) return moveInput.x;
-        if (moveInput.y == 0) return isFacingRight ? 1 : -1;
-        return 0;
+        return Physics2D.OverlapCircle(groundCheck.position, 0.19f, groundLayer);
     }
 }
 
     #endregion
-
-//old code moved to other scripts ->
-/*
-
-private IEnumerator SpawnFire()
-{
-    dustFuego.Play();
-    yield return new WaitForSeconds(0.5f);
-    dustFuego.Stop();
-}
-private IEnumerator SpawnWater()
-{
-    dustAgua.Play();
-    yield return new WaitForSeconds(0.5f);
-    dustAgua.Stop();
-}
-
-void CreateDust()
-{
-    dust.Play();
-}
-
-
-public IEnumerator ChangeColor(Color color, float duration)
-{
-    Color start = srBody.color;
-    float elapsed = 0f;
-    while (elapsed < duration)
-    {
-        srBody.color = Color.Lerp(start, color, elapsed / duration);
-        srHead.color = Color.Lerp(start, color, elapsed / duration);
-        elapsed += Time.deltaTime;
-        yield return null;
-    }
-    srBody.color = color;
-    srHead.color = color;
-    playerManagement.actualColor = srBody.color;
-}
-
-
-
-private void ChangeParticles() //cambio de particulas y de color del personaje para los elementos
-{
-    if (isFire == true)
-    {
-        StartCoroutine(ChangeColor(new Color(0.23f, 0.345f, 0.655f), 0.2f));
-        fuego.Stop();
-        agua.Play();
-    } else
-    {
-        StartCoroutine(ChangeColor(new Color(0.619f, 0.227f, 0.10f), 0.2f));
-        agua.Stop();
-        fuego.Play();
-    }
-
-    isFire = !isFire;
-}
-
-
-
-
-private void RespawnPlayer()
-{
-    rb.transform.position = respawn.transform.position;
-    rb.linearVelocity = Vector2.zero;
-}
-
-private IEnumerator PlayerDead()
-{
-    if (dashCoroutine != null)
-    {
-        StopCoroutine(dashCoroutine);
-        dashCoroutine = null;
-        tr.emitting = false;
-        dashGhost.StopSpawning();
-        gravityStored = false;
-        isDashing = false;
-        canDash = true;
-        cdOn = true;
-    }
-    playerControls.Disable(); // Desactiva temporalmente los controles
-    rb.gravityScale = 0f; // Detiene la física
-    rb.linearVelocity = Vector2.zero; // Detiene el movimiento
-    isDashing = false;
-    srBody.color = Color.clear;
-    srHead.color = Color.clear;
-    yield return new WaitForSeconds(0.20f);
-    srBody.color = actualColor;
-    srHead.color = actualColor;
-    yield return new WaitForSeconds(0.2f);
-    srBody.color = Color.clear;
-    srHead.color = Color.clear;
-    yield return new WaitForSeconds(0.2f);
-    srBody.color = actualColor;
-    srHead.color = actualColor;
-    yield return new WaitForSeconds(0.2f);
-    srBody.color = Color.clear;
-    srHead.color = Color.clear;
-    yield return new WaitForSeconds(0.15f);
-    srBody.color = actualColor;
-    srHead.color = actualColor;
-    rb.gravityScale = defaultGravity;
-    playerControls.Enable();
-    RespawnPlayer();
-
-}
-
-
-
-
-
-}
-*/

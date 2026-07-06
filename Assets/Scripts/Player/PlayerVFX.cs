@@ -9,18 +9,25 @@ public class PlayerVFX : MonoBehaviour
     [SerializeField] private ParticleSystem dustAgua;
     [SerializeField] private ParticleSystem fuego;
     [SerializeField] private ParticleSystem agua;
+    [SerializeField] private ParticleSystem aguaCircle;
+    [SerializeField] private ParticleSystem fuegoCircle;
 
     [SerializeField] private SpriteRenderer srBody;
     [SerializeField] private SpriteRenderer srHead;
 
-    private bool isFire = true;
+    [SerializeField] private Color colorFire;
+    [SerializeField] private Color colorWater;
 
+    [Header("Script References:")]
+    private PlayerStateList pState;
     private PlayerManagement playerManagement;
     void Start()
     {
         playerManagement = GetComponent<PlayerManagement>();
+        pState = GetComponent<PlayerStateList>();
         fuego.Stop();
         agua.Stop();
+
     }
 
     private IEnumerator SpawnFire() {
@@ -32,6 +39,14 @@ public class PlayerVFX : MonoBehaviour
         dustAgua.Play();
         yield return new WaitForSeconds(0.5f);
         dustAgua.Stop();
+    }
+
+    public void SpawnFireEffect() {
+        StartCoroutine(SpawnFire());
+    }
+
+    public void SpawnWaterEffect() {
+        StartCoroutine(SpawnWater());
     }
 
     public void CreateDust() {
@@ -50,40 +65,31 @@ public class PlayerVFX : MonoBehaviour
         }
         srBody.color = color;
         srHead.color = color;
-        playerManagement.actualColor = srBody.color;
+        playerManagement.SetActualColor(srBody.color);
     }
 
 
 
     public void ChangeParticles() //cambio de particulas y de color del personaje para los elementos
     {
-        if (isFire == true) {
-            StartCoroutine(ChangeColor(new Color(0.23f, 0.345f, 0.655f), 0.2f));
+        if (pState.isFire) {
+            StartCoroutine(ChangeColor(colorWater, 0.2f));
+            AudioManager.Instance.PlayOneShot(FMODEvents.Instance.swapElementSFX, transform.position);
+            aguaCircle.Play();
+            CameraShake.Instance.Shake(0.2f, 0.1f);
             fuego.Stop();
             agua.Play();
         }
         else {
-            StartCoroutine(ChangeColor(new Color(0.619f, 0.227f, 0.10f), 0.2f));
+            StartCoroutine(ChangeColor(colorFire, 0.2f));
+            AudioManager.Instance.PlayOneShot(FMODEvents.Instance.swapElementSFX, transform.position);
+            fuegoCircle.Play();
+            CameraShake.Instance.Shake(0.2f, 0.1f);
             agua.Stop();
             fuego.Play();
         }
 
-        isFire = !isFire;
+        pState.isFire = !pState.isFire;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
-
-        Debug.Log("Triggerea");
-
-        if (collision.CompareTag("Fire")) {
-            if (!isFire) playerManagement.KillPlayer();
-            else StartCoroutine(SpawnFire());
-        }
-
-        if (collision.CompareTag("Agua")) {
-            if (isFire) playerManagement.KillPlayer();
-            else StartCoroutine(SpawnWater());
-        }
-
-    }
 }

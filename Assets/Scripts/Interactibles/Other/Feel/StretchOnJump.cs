@@ -5,10 +5,14 @@ public class StretchOnJump : MonoBehaviour
 {
     private bool isStretching = false;
 
+
+    private void Awake() {
+    }
     private void OnTriggerStay2D(Collider2D collision) {
         if (collision.CompareTag("Player")) {
-            PlayerStateList player = collision.GetComponent<PlayerStateList>();
-            if (player.jumping && !isStretching) {
+            PlayerMovement movement = collision.GetComponent<PlayerMovement>();
+            if (movement.jumpResetting && !isStretching) {
+                movement.jumpResetting = false;
                 StartCoroutine(StretchAnimCoroutine());
                 Debug.Log("Stretching!");
             }
