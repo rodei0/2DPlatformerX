@@ -1,4 +1,4 @@
-<REAPER_PROJECT 0.1 "7.53/win64" 1779413094 0
+<REAPER_PROJECT 0.1 "7.53/win64" 1783822262 0
   <NOTES 0 2
   >
   RIPPLE 0 0
@@ -19,9 +19,9 @@
   VIDEO_CONFIG 0 0 65792
   PANMODE 3
   PANLAWFLAGS 3
-  CURSOR 12.12897492264288
-  ZOOM 198.1206173914976 1899 0
-  VZOOMEX 9.68002033 0
+  CURSOR 68.75696219880432
+  ZOOM 140.7553257932 8894 0
+  VZOOMEX 9.68002033 2
   USE_REC_CFG 0
   RECMODE 1
   SMPTESYNC 0 30 100 40 1000 300 0 0 1 0 0
@@ -33,7 +33,7 @@
   >
   <APPLYFX_CFG
   >
-  RENDER_FILE "X:\Unity Projects\2DGame\2DPlatformerX\FMODProject\project\Assets\SFX\swapElementAudio.wav"
+  RENDER_FILE "X:\Unity Projects\2DGame\2DPlatformerX\FMODProject\project\Assets\SFX\Footsteps\Footstep5.wav"
   RENDER_FMT 0 2 44100
   RENDER_1X 0
   RENDER_RANGE 2 0 29.173 0 1000
@@ -67,8 +67,8 @@
   GLOBAL_AUTO -1
   TEMPO 120 4 4 0
   PLAYRATE 1 0 0.25 4
-  SELECTION 12.03812117790399 12.38639386606976
-  SELECTION2 12.03812117790399 12.38639386606976
+  SELECTION 68.75696219880432 68.77513573082959
+  SELECTION2 68.75696219880432 68.77513573082959
   MASTERAUTOMODE 0
   MASTERTRACKHEIGHT 0 0
   MASTERPEAKCOL 16576
@@ -91,7 +91,7 @@
   >
   <TEMPOENVEX
     EGUID {E4A96D5E-73AB-4A41-9219-F35434FD8A08}
-    ACT 1 -1
+    ACT 0 -1
     VIS 1 0 1
     LANEHEIGHT 0 0
     ARM 0
@@ -173,25 +173,69 @@
       >
     >
     <ITEM
-      POSITION 16.31834204115874
+      POSITION 44.94736649443812
       SNAPOFFS 0
-      LENGTH 0.85489166874588
+      LENGTH 1.66371871356196
       LOOP 1
       ALLTAKES 0
       FADEIN 1 0 0 1 0 0 0
-      FADEOUT 1 0 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
       MUTE 0 0
       SEL 0
-      IGUID {A9C783B3-ACBC-4615-B838-7386AF9C6B87}
-      IID 1
-      NAME swapElement.mp3
+      IGUID {10246138-1089-456E-9020-A5BF87798985}
+      IID 17
+      NAME fire.mp3
       VOLPAN 1 0 1 -1
       SOFFS 0
       PLAYRATE 1 1 0 -1 0 0.0025
       CHANMODE 0
-      GUID {9468EB48-2A4D-40A4-91AC-65BE6D714132}
+      GUID {1555DEAB-E3AB-47F6-B76E-0284C18D0655}
       <SOURCE MP3
-        FILE "swapElement.mp3" 1
+        FILE "Media\fire.mp3" 1
+      >
+    >
+    <ITEM
+      POSITION 46.95119630895714
+      SNAPOFFS 0
+      LENGTH 0.38865213027194
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {7344BE81-D264-4D0C-83F4-D9833CA4040A}
+      IID 17
+      NAME fire.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 1.66371871356194
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {F32FEFD1-948D-4E85-9729-B485282A7455}
+      <SOURCE MP3
+        FILE "Media\fire.mp3" 1
+      >
+    >
+    <ITEM
+      POSITION 55.83
+      SNAPOFFS 0
+      LENGTH 7.02158748949932
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {536594FC-77D4-4CC2-8A4D-C1FA05BCADA6}
+      IID 17
+      NAME fire.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 2.0523708438339
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {5D421F75-8FF1-49DE-A659-9A2BB6ACDA46}
+      <SOURCE MP3
+        FILE "Media\fire.mp3" 1
       >
     >
   >
@@ -237,25 +281,179 @@
       WAK 0 0
     >
     <ITEM
-      POSITION 12.03812117790399
+      POSITION 47.82440174450322
       SNAPOFFS 0
-      LENGTH 0.34827268816577
+      LENGTH 0.97920147107479
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.15647033816143 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {FB085AD0-0BF0-45C4-A61C-77C3B29590F8}
+      IID 20
+      NAME fire2.mp3
+      VOLPAN 1 0 0.218714 -1
+      SOFFS 0.62083392238866
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {9AA85DDA-3A8B-4D38-B138-279F7E479044}
+      <SOURCE MP3
+        FILE "Media\fire2.mp3" 1
+      >
+    >
+    <ITEM
+      POSITION 65.25742203131576
+      SNAPOFFS 0
+      LENGTH 0.35664948823685
       LOOP 1
       ALLTAKES 0
       FADEIN 1 0 0 1 0 0 0
       FADEOUT 1 0.01 0 1 0 0 0
       MUTE 0 0
-      SEL 1
-      IGUID {7FCA1BBF-7F3F-43C4-B705-BF83B6A335E5}
-      IID 7
-      NAME swapElement.mp3
-      VOLPAN 1 0 1.644445 -1
+      SEL 0
+      IGUID {48D1B0CC-59CF-416E-B71B-866354CCA87E}
+      IID 29
+      NAME footsteps.mp3
+      VOLPAN 1 0 1 -1
       SOFFS 0
-      PLAYRATE 2.14492753623189 1 8 -1 0 0.0025
+      PLAYRATE 1 1 0 -1 0 0.0025
       CHANMODE 0
-      GUID {8A0D34BF-B2A8-4951-A0AC-209CDB7BB2F6}
+      GUID {021E1DB4-47BD-48C8-97B5-CF2F03CDF064}
       <SOURCE MP3
-        FILE "swapElement.mp3" 1
+        FILE "Media\footsteps.mp3" 1
+      >
+    >
+    <ITEM
+      POSITION 65.95438590656154
+      SNAPOFFS 0
+      LENGTH 0.05143644835762
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {01AE149A-B462-408D-827D-7A94E1CE8E1E}
+      IID 29
+      NAME footsteps.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 0.35664948823685
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {DCED49E1-9946-4DA7-BAB4-BD5D679FA532}
+      <SOURCE MP3
+        FILE "Media\footsteps.mp3" 1
+      >
+    >
+    <ITEM
+      POSITION 66.7125565589149
+      SNAPOFFS 0
+      LENGTH 0.03076980469645
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {1DC88649-6C71-447B-A151-917CB4319EAC}
+      IID 29
+      NAME footsteps.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 1.0698132482773
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {04255845-504E-4C79-9CD9-DF3ECCE903F7}
+      <SOURCE MP3
+        FILE "Media\footsteps.mp3" 1
+      >
+    >
+    <ITEM
+      POSITION 67.40940213586379
+      SNAPOFFS 0
+      LENGTH 0.03076980469645
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {BCF94345-3E3D-43B9-AC48-403877287603}
+      IID 29
+      NAME footsteps.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 1.76665882522619
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {B3FAAE4A-E7B5-48AF-9B6D-F316FADD812C}
+      <SOURCE MP3
+        FILE "Media\footsteps.mp3" 1
+      >
+    >
+    <ITEM
+      POSITION 68.07610380257132
+      SNAPOFFS 0
+      LENGTH 0.034399899905
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {579917CB-CAF9-4991-B75F-4CF04C690DE2}
+      IID 29
+      NAME footsteps.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 2.43336049193373
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {240E95C2-5B10-478E-A691-C8318D6A02BC}
+      <SOURCE MP3
+        FILE "Media\footsteps.mp3" 1
+      >
+    >
+    <ITEM
+      POSITION 68.75696219880432
+      SNAPOFFS 0
+      LENGTH 0.01817353202527
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.00817353202527 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 1
+      IGUID {6D1EC548-4F90-416F-B7ED-D06543557192}
+      IID 29
+      NAME footsteps.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 3.11421888816672
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {47F74E3C-7402-414E-AB30-FECE42AD0140}
+      <SOURCE MP3
+        FILE "Media\footsteps.mp3" 1
+      >
+    >
+    <ITEM
+      POSITION 68.94246240515132
+      SNAPOFFS 0
+      LENGTH 4.94051007413918
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {3EC246AC-C082-45B6-BAEA-5FA42A1ED8E0}
+      IID 29
+      NAME footsteps.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 3.13239242019199
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {DA6FFCD2-6438-4F5B-9D08-0CF913988DB3}
+      <SOURCE MP3
+        FILE "Media\footsteps.mp3" 1
       >
     >
   >
@@ -285,25 +483,205 @@
     MIDIOUT -1
     MAINSEND 1 0
     <ITEM
-      POSITION 13.91071780557794
+      POSITION 13.16
       SNAPOFFS 0
-      LENGTH 15.26293865436885
+      LENGTH 9.09
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {A9B5FEBC-DDCB-4E0D-8883-1FA7C5F370AB}
+      IID 9
+      NAME waterSounds.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {5B947020-C0D0-4E96-A718-C2C6E24EDEE1}
+      <SOURCE MP3
+        FILE "Media\waterSounds.mp3" 1
+      >
+    >
+    <ITEM
+      POSITION 23.44
+      SNAPOFFS 0
+      LENGTH 0.68
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {4D2D0943-4417-4AB0-8CC9-C55F6E54C505}
+      IID 9
+      NAME waterSounds.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 9.09
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {CC06D6E8-E8EF-4D0A-868B-72B9207D43D7}
+      <SOURCE MP3
+        FILE "Media\waterSounds.mp3" 1
+      >
+    >
+    <ITEM
+      POSITION 24.42
+      SNAPOFFS 0
+      LENGTH 0.32
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {CA7BD53A-003F-44F3-B994-50DBA9FE52FB}
+      IID 9
+      NAME waterSounds.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 11.82
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {4B331D41-7C03-481F-979C-D70348CF8DE9}
+      <SOURCE MP3
+        FILE "Media\waterSounds.mp3" 1
+      >
+    >
+    <ITEM
+      POSITION 25.05
+      SNAPOFFS 0
+      LENGTH 0.21
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {F296672D-A107-482C-8A33-B9E7C6599EF4}
+      IID 9
+      NAME waterSounds.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 14.08
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {A9EC6C77-7AAE-4EAF-977A-526F158DA2C7}
+      <SOURCE MP3
+        FILE "Media\waterSounds.mp3" 1
+      >
+    >
+    <ITEM
+      POSITION 27.45
+      SNAPOFFS 0
+      LENGTH 17.82395833333337
       LOOP 1
       ALLTAKES 0
       FADEIN 1 0.01 0 1 0 0 0
       FADEOUT 1 0 0 1 0 0 0
       MUTE 0 0
       SEL 0
-      IGUID {4EA3194E-FC6C-4269-B393-0F841990D166}
-      IID 7
-      NAME swapElement.mp3
+      IGUID {46E7F43E-F727-4F86-8CDA-92D3089AB859}
+      IID 9
+      NAME waterSounds.mp3
       VOLPAN 1 0 1 -1
-      SOFFS 0.74701967896427
+      SOFFS 14.29
       PLAYRATE 1 1 0 -1 0 0.0025
       CHANMODE 0
-      GUID {43E89546-0822-4FB1-A70E-C65B03D7EC6B}
+      GUID {1C19B80E-42F9-4BDC-96B5-F49E3DF77975}
       <SOURCE MP3
-        FILE "swapElement.mp3" 1
+        FILE "Media\waterSounds.mp3" 1
+      >
+    >
+  >
+  <TRACK {A07FEFAA-90BB-4AC8-A0F9-62AD3E47058E}
+    NAME freesound_community-short-whoosh-13x-14526
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {A07FEFAA-90BB-4AC8-A0F9-62AD3E47058E}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <ITEM
+      POSITION 46.24
+      SNAPOFFS 0
+      LENGTH 5.798281378185
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {796F5695-BD50-4A35-B04F-17338B3A7099}
+      IID 23
+      NAME freesound_community-short-whoosh-13x-14526.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {CD1C5357-2C96-4770-B928-733BDCD06CA0}
+      <SOURCE MP3
+        FILE "Media\freesound_community-short-whoosh-13x-14526.mp3" 1
+      >
+    >
+    <ITEM
+      POSITION 52.45
+      SNAPOFFS 0
+      LENGTH 0.14
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {BA603497-7C52-4AFE-BCE1-3661B4423905}
+      IID 23
+      NAME freesound_community-short-whoosh-13x-14526.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 5.798281378185
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {D753E560-5794-43D4-A96C-DCC0D582B5FC}
+      <SOURCE MP3
+        FILE "Media\freesound_community-short-whoosh-13x-14526.mp3" 1
+      >
+    >
+    <ITEM
+      POSITION 54.19
+      SNAPOFFS 0
+      LENGTH 8.36919986563075
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {05653226-8CC3-4B8E-A3A2-5BC0A934DCA7}
+      IID 23
+      NAME freesound_community-short-whoosh-13x-14526.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 5.9607584677026
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {AF7CA3A8-32F7-43E2-A798-5BA8818CCF3A}
+      <SOURCE MP3
+        FILE "Media\freesound_community-short-whoosh-13x-14526.mp3" 1
       >
     >
   >

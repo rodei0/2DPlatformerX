@@ -7,12 +7,16 @@ public class PlayerMovement : MonoBehaviour
     [Header("Basic variables:")]
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
+    [SerializeField] private float maxFallSpeed = 14f;
     //[SerializeField] private int maxJump;
     //private int jumpCount;
     private bool hasExtraJump;
+
+    //buffer jump
     private int jumpBufferCounter = 0;
-    [SerializeField] private float coyoteTime = 0.15f;
     [SerializeField] private int jumpBufferFrames;
+
+    [SerializeField] private float coyoteTime = 0.15f;
     private float horizontal;
     private bool jumpReleased = false;
     public bool jumpResetting = false;
@@ -31,8 +35,9 @@ public class PlayerMovement : MonoBehaviour
     private PlayerVFX playerVFX;
     public PlayerControls playerControls;
 
-
-
+    [Header("Footsteps sound")]
+    private float footstepTimer = 0f;
+    [SerializeField] private float footstepInterval = 0.3f; // Intervalo entre pasos en segundos
 
 
     #endregion
@@ -96,14 +101,17 @@ public class PlayerMovement : MonoBehaviour
             playerVFX.ChangeParticles();
         }
 
+        //sonido de pasos
+        FootstepSounds();
 
         Flip();
-
-
+        UpdateGroundVariables();
     }
 
     private void FixedUpdate() {
-        UpdateGroundVariables();
+        //capar la velocidad de caida
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, Mathf.Max(rb.linearVelocity.y, -maxFallSpeed));
+
         Jump();
 
         if (pState.isDashing) {
@@ -142,6 +150,7 @@ public class PlayerMovement : MonoBehaviour
 
                 AudioManager.Instance.PlayOneShot(FMODEvents.Instance.jumpSFX, transform.position);
                 Debug.Log("Jumping");
+                StartCoroutine(playerVFX.StretchOnJump());
                 playerVFX.CreateDust();
 
                 hasExtraJump = false;
@@ -183,15 +192,25 @@ public class PlayerMovement : MonoBehaviour
         pState.isGrounded = IsGrounded();
 
         // Detect landing
+        if (pState.isGrounded && pState.wasinAir) {
+            playerVFX.CreateDust();
+            StartCoroutine(playerVFX.SquashCharacter());
+        }
         if (pState.isGrounded) {
             Debug.Log("Grounded");
             pState.isJumping = false;
             pState.coyoteCounter = coyoteTime;
+            pState.wasinAir = false;
             if (!pState.isDashing) {
                 pState.canDash = true;
             }
-        } else { pState.coyoteCounter -= Time.fixedDeltaTime; }
+        } else { 
+            pState.coyoteCounter -= Time.fixedDeltaTime;
+            pState.wasinAir = true;
+        }
         if (jumpBufferCounter > 0) { jumpBufferCounter--;}
+        
+        
     }
 
     public void ResetJump() {
@@ -221,7 +240,20 @@ public class PlayerMovement : MonoBehaviour
         if (rb.linearVelocity.y > 0.1f)
             return false;
 
-        return Physics2D.OverlapCircle(groundCheck.position, 0.19f, groundLayer);
+        return Physics2D.OverlapCircle(groundCheck.position, 0.10f, groundLayer);
+    }
+
+    private void FootstepSounds() {
+        if (Mathf.Abs(rb.linearVelocity.x) > 0.1f && IsGrounded() && !pState.isDashing) {
+            footstepTimer += Time.deltaTime;
+            if (footstepTimer >= footstepInterval) {
+                AudioManager.Instance.PlayOneShot(FMODEvents.Instance.footstepsSFX, transform.position);
+                footstepTimer = 0f;
+            }
+        }
+        else {
+            footstepTimer = footstepInterval;
+        }
     }
 }
 

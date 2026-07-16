@@ -30,11 +30,13 @@ public class PlayerCollision : MonoBehaviour
 
         if (collision.CompareTag("Fire")) {
             if (pState.isFire)
+            AudioManager.Instance.PlayOneShot(FMODEvents.Instance.touchWaterSFX, transform.position);
             playerVFX.SpawnFireEffect();
         }
 
         if (collision.CompareTag("Agua")) {
             if (!pState.isFire)
+            AudioManager.Instance.PlayOneShot(FMODEvents.Instance.touchWaterSFX, transform.position);
             playerVFX.SpawnWaterEffect();
         }
 

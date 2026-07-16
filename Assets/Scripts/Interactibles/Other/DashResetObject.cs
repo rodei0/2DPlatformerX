@@ -22,6 +22,7 @@ public class DashResetObject : MonoBehaviour
     public void OnEnter()
     {
         animator.SetBool("isTouched", true);
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.resetDashSFX, transform.position);
         CameraShake.Instance.Shake(0.04f, 0.15f);
         particlesEffect.PlayBurst();
         StartCoroutine(DashResetCd());

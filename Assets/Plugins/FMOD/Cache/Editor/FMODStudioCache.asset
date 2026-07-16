@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8926367233931890742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/JumpReset
+  m_EditorClassIdentifier: 
+  Path: event:/Player/JumpReset
+  Guid:
+    Data1: 347281724
+    Data2: 1321813653
+    Data3: -1024984683
+    Data4: 1797983915
+  Banks:
+  - {fileID: -7065907978028669626}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-8665780753611327270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42,10 +69,10 @@ MonoBehaviour:
   Path: FMODProject/project/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 639162276657005370
+  lastModified: 639193904113787294
   FileSizes:
   - Name: Desktop
-    Value: 30336
+    Value: 76064
   Exists: 1
 --- !u!114 &-7046151849910654995
 MonoBehaviour:
@@ -89,11 +116,38 @@ MonoBehaviour:
   Path: FMODProject/project/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639162276656041716
+  lastModified: 639193904113203090
   FileSizes:
   - Name: Desktop
-    Value: 1058
+    Value: 1226
   Exists: 1
+--- !u!114 &-3258580748439608439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Footsteps
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Footsteps
+  Guid:
+    Data1: -1400090698
+    Data2: 1081878328
+    Data3: -1838046846
+    Data4: 97839907
+  Banks:
+  - {fileID: -7065907978028669626}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-2776199041189335031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,6 +195,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-988988308124159507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/TouchWater
+  m_EditorClassIdentifier: 
+  Path: event:/Player/TouchWater
+  Guid:
+    Data1: 1599200544
+    Data2: 1339161791
+    Data3: -1773434999
+    Data4: -1717407979
+  Banks:
+  - {fileID: -7065907978028669626}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,13 +244,17 @@ MonoBehaviour:
   - {fileID: -8665780753611327270}
   - {fileID: -1479783501851567836}
   - {fileID: -7046151849910654995}
+  - {fileID: 4323887009714483288}
+  - {fileID: -988988308124159507}
+  - {fileID: -8926367233931890742}
+  - {fileID: -3258580748439608439}
   EditorParameters: []
   MasterBanks:
   - {fileID: 3855853502754009443}
   StringsBanks:
   - {fileID: -7026804953237257199}
   cacheVersion: 131858
-  cacheTime: 639162276657005370
+  cacheTime: 639193904113787294
   SerializableEventsDict:
   - key: event:/Player/Dash
     index: 0
@@ -179,6 +264,14 @@ MonoBehaviour:
     index: 2
   - key: event:/Player/Hit
     index: 3
+  - key: event:/Player/ResetDash
+    index: 4
+  - key: event:/Player/TouchWater
+    index: 5
+  - key: event:/Player/JumpReset
+    index: 6
+  - key: event:/Player/Footsteps
+    index: 7
 --- !u!114 &3537642931754428678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,8 +314,35 @@ MonoBehaviour:
   Path: FMODProject/project/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639162276656030169
+  lastModified: 639193904113203090
   FileSizes:
   - Name: Desktop
     Value: 1378
   Exists: 1
+--- !u!114 &4323887009714483288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/ResetDash
+  m_EditorClassIdentifier: 
+  Path: event:/Player/ResetDash
+  Guid:
+    Data1: 1999641937
+    Data2: 1148778440
+    Data3: -2053205359
+    Data4: -2001114113
+  Banks:
+  - {fileID: -7065907978028669626}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0

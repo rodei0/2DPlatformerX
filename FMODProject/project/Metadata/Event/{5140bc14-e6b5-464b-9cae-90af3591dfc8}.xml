@@ -72,6 +72,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{46d5560c-6d23-48b0-b65b-f6c1982352c0}">
+		<property name="volume">
+			<value>-4</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{c060c1fe-a65a-4b08-bb4a-cbf1ab27656f}</destination>
 		</relationship>
@@ -110,6 +113,17 @@
 	<object class="PitchShifterEffect" id="{a0648569-d463-4657-96f9-5234c8576fa3}">
 		<property name="pitch">
 			<value>1.02999997</value>
+		</property>
+		<relationship name="modulators">
+			<destination>{5d2cafee-d901-4103-9b82-8ca87945df9f}</destination>
+		</relationship>
+	</object>
+	<object class="RandomizerModulator" id="{5d2cafee-d901-4103-9b82-8ca87945df9f}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>pitch</value>
+		</property>
+		<property name="amount">
+			<value>7</value>
 		</property>
 	</object>
 </objects>

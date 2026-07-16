@@ -29,6 +29,7 @@ public class JumpResetObject : MonoBehaviour
             if (player != null)
             {
                 player.ResetJump();
+                AudioManager.Instance.PlayOneShot(FMODEvents.Instance.jumpResetSFX, transform.position);
                 lightOscile.FadelightFunc();
                 particlesEffect.StopParticles();
                 canUse = false;

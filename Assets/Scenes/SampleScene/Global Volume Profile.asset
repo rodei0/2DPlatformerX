@@ -17,6 +17,8 @@ MonoBehaviour:
   - {fileID: 1627745289149317419}
   - {fileID: 3706560620765303249}
   - {fileID: 5279996363119019874}
+  - {fileID: 5273119112970679734}
+  - {fileID: 7236418678866414890}
 --- !u!114 &1627745289149317419
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -29,7 +31,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 899c54efeace73346a0a16faa3afe726, type: 3}
   m_Name: Vignette
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   color:
     m_OverrideState: 0
     m_Value: {r: 0, g: 0, b: 0, a: 1}
@@ -38,10 +40,10 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.254
+    m_Value: 0.157
   smoothness:
-    m_OverrideState: 0
-    m_Value: 0.618
+    m_OverrideState: 1
+    m_Value: 0.805
   rounded:
     m_OverrideState: 0
     m_Value: 0
@@ -107,7 +109,7 @@ MonoBehaviour:
   active: 1
   postExposure:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.5
   contrast:
     m_OverrideState: 1
     m_Value: 14.9
@@ -120,6 +122,25 @@ MonoBehaviour:
   saturation:
     m_OverrideState: 1
     m_Value: 16.7
+--- !u!114 &5273119112970679734
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb60a22f311433c4c962b888d1393f88, type: 3}
+  m_Name: PaniniProjection
+  m_EditorClassIdentifier: 
+  active: 1
+  distance:
+    m_OverrideState: 1
+    m_Value: 0.692
+  cropToFit:
+    m_OverrideState: 0
+    m_Value: 1
 --- !u!114 &5279996363119019874
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -160,3 +181,28 @@ MonoBehaviour:
   maxNits:
     m_OverrideState: 0
     m_Value: 1000
+--- !u!114 &7236418678866414890
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29fa0085f50d5e54f8144f766051a691, type: 3}
+  m_Name: FilmGrain
+  m_EditorClassIdentifier: 
+  active: 1
+  type:
+    m_OverrideState: 1
+    m_Value: 10
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.154
+  response:
+    m_OverrideState: 1
+    m_Value: 1
+  texture:
+    m_OverrideState: 1
+    m_Value: {fileID: 2800000, guid: e652260133166e84bb139b2af4d781e7, type: 3}

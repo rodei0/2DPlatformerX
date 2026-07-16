@@ -14,6 +14,9 @@ public class PlayerDash : MonoBehaviour
     [SerializeField] private float dashingTime = 0.2f;
     [SerializeField] private float dashingCd = 0.2f;
 
+    private float dashBufferCounter = 0;
+    [SerializeField] private float dashBufferFrames;
+
     [Header("Components")]
     private Rigidbody2D rb;
 
@@ -37,9 +40,24 @@ public class PlayerDash : MonoBehaviour
     }
 
     void Update() {
-        if (playerMovement.playerControls.Player.Dash.WasPressedThisFrame() && pState.canDash && cdOn) {
-            dashCoroutine = StartCoroutine(Dash());
+        //if (playerMovement.playerControls.Player.Dash.WasPressedThisFrame() && pState.canDash && cdOn) {
+        //   dashCoroutine = StartCoroutine(Dash());
+        //}
+
+        #region dash buffer
+        if (playerMovement.playerControls.Player.Dash.WasPressedThisFrame()) {
+            dashBufferCounter = dashBufferFrames;
         }
+
+        if (dashBufferCounter > 0) {
+            dashBufferCounter -= Time.deltaTime;
+        }
+
+        if (dashBufferCounter > 0 && pState.canDash && cdOn) {
+            dashCoroutine = StartCoroutine(Dash());
+            dashBufferCounter = 0;
+        }
+        #endregion
     }
 
     private IEnumerator Dash() //bro lo de hacer el dash y el reset de dash y que cuando dasheo con el reset de dash se buggea la gravedad q cancer es <- fixed todo bien
@@ -89,6 +107,7 @@ public class PlayerDash : MonoBehaviour
 
     private void FullDashReset() {
         pState.canDash = true;
+        dashBufferCounter = 0;
         //cdOn = true; //no queremos que el dashreset reinicie el cd ya que ocurren bugs raros de dashear la nada, asi que hacemos que cuando vuelva el cd si se pueda dashear, god
         StartCoroutine(HitStop());
     }
@@ -100,11 +119,14 @@ public class PlayerDash : MonoBehaviour
             dashCoroutine = null;
         }
 
+        dashBufferCounter = 0;
         gravityStored = false;
         pState.isDashing = false;
         pState.canDash = true;
         cdOn = true;
     }
+
+    
 
     private IEnumerator HitStop() //efecto que relentiza el tiempo al tocar el resetdash para notar mas el impacto y poder dashear mas comfy
     {

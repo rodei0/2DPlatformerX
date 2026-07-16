@@ -9,6 +9,7 @@ public class PlayerStateList : MonoBehaviour
   public bool isFacingRight = true; 
   public bool isDashing = false;
   public bool canDash = true;
+  public bool wasinAir = false;
 
   public float coyoteCounter = 0f;
 }
