@@ -5080,8 +5080,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2a38ab46fb7ddb449af9b964a2ec6ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  oscileUpDown: 1
+  oscileRotation: 0
   oscileSpeed: 4
   amplitude: 0.07
+  oscileSpeedRot: 0
+  amplitudeRot: 0
 --- !u!114 &8331847548735394782
 MonoBehaviour:
   m_ObjectHideFlags: 0

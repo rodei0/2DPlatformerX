@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{b5916ac0-7a7a-4770-8bce-f000e681f679}">
+		<property name="assetPath">
+			<value>SFX/newjump.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.73142857142857143</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{ff952033-915c-49ed-9554-0fd50e308e0d}</destination>
+		</relationship>
+	</object>
+</objects>

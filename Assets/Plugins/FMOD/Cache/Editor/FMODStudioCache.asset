@@ -69,10 +69,10 @@ MonoBehaviour:
   Path: FMODProject/project/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 639193904113787294
+  lastModified: 639201989333952689
   FileSizes:
   - Name: Desktop
-    Value: 76064
+    Value: 72768
   Exists: 1
 --- !u!114 &-7046151849910654995
 MonoBehaviour:
@@ -116,10 +116,10 @@ MonoBehaviour:
   Path: FMODProject/project/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639193904113203090
+  lastModified: 639201982841353201
   FileSizes:
   - Name: Desktop
-    Value: 1226
+    Value: 1282
   Exists: 1
 --- !u!114 &-3258580748439608439
 MonoBehaviour:
@@ -248,13 +248,14 @@ MonoBehaviour:
   - {fileID: -988988308124159507}
   - {fileID: -8926367233931890742}
   - {fileID: -3258580748439608439}
+  - {fileID: 2908493596408927895}
   EditorParameters: []
   MasterBanks:
   - {fileID: 3855853502754009443}
   StringsBanks:
   - {fileID: -7026804953237257199}
   cacheVersion: 131858
-  cacheTime: 639193904113787294
+  cacheTime: 639201989333952689
   SerializableEventsDict:
   - key: event:/Player/Dash
     index: 0
@@ -272,6 +273,35 @@ MonoBehaviour:
     index: 6
   - key: event:/Player/Footsteps
     index: 7
+  - key: event:/Player/FallIntoGround
+    index: 8
+--- !u!114 &2908493596408927895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/FallIntoGround
+  m_EditorClassIdentifier: 
+  Path: event:/Player/FallIntoGround
+  Guid:
+    Data1: 920947953
+    Data2: 1228879488
+    Data3: -1767733887
+    Data4: 1201740738
+  Banks:
+  - {fileID: -7065907978028669626}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &3537642931754428678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,7 +344,7 @@ MonoBehaviour:
   Path: FMODProject/project/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639193904113203090
+  lastModified: 639201982841337440
   FileSizes:
   - Name: Desktop
     Value: 1378

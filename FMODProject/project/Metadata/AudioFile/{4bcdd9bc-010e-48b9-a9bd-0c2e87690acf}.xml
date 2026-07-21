@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{4bcdd9bc-010e-48b9-a9bd-0c2e87690acf}">
+		<property name="assetPath">
+			<value>SFX/Footsteps/fall.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>24</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>53.783999999999999</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{ff952033-915c-49ed-9554-0fd50e308e0d}</destination>
+		</relationship>
+	</object>
+</objects>

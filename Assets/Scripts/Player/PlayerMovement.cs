@@ -195,9 +195,9 @@ public class PlayerMovement : MonoBehaviour
         if (pState.isGrounded && pState.wasinAir) {
             playerVFX.CreateDust();
             StartCoroutine(playerVFX.SquashCharacter());
+            AudioManager.Instance.PlayOneShot(FMODEvents.Instance.fallTouchFloor, transform.position);
         }
         if (pState.isGrounded) {
-            Debug.Log("Grounded");
             pState.isJumping = false;
             pState.coyoteCounter = coyoteTime;
             pState.wasinAir = false;

@@ -5,7 +5,7 @@ public class PlayerManagement : MonoBehaviour
 {
     [Header("Components")]
     private Rigidbody2D rb;
-    [SerializeField] private Transform respawn;
+    [SerializeField] public Transform respawn;
     [SerializeField] private SpriteRenderer srBody;
     [SerializeField] private SpriteRenderer srHead;
     private float defaultGravity;
@@ -30,6 +30,10 @@ public class PlayerManagement : MonoBehaviour
     private void RespawnPlayer() {
         rb.transform.position = respawn.transform.position;
         rb.linearVelocity = Vector2.zero;
+    }
+
+    public void SetRespawnPoint(Vector3 newRespawnPoint) {
+        respawn.position = newRespawnPoint;
     }
 
     private IEnumerator PlayerDead() {

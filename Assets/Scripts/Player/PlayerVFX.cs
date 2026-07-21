@@ -102,7 +102,6 @@ public class PlayerVFX : MonoBehaviour
         if (isSquashing || isStretching) {
             yield break;
         }
-        Debug.Log("awiwa");
             isStretching = true;
             Vector3 original = Vector3.one;
             Vector3 Stretch = new Vector3(0.8f, 1.2f, 1);

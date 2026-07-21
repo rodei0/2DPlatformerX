@@ -15,6 +15,8 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference touchWaterSFX { get; private set; }
     [field: SerializeField] public EventReference jumpResetSFX { get; private set; }
     [field: SerializeField] public EventReference footstepsSFX { get; private set; }
+    [field: SerializeField] public EventReference fallTouchFloor { get; private set; }
+
 
 
 

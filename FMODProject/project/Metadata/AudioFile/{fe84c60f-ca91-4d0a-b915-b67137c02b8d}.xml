@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{fe84c60f-ca91-4d0a-b915-b67137c02b8d}">
+		<property name="assetPath">
+			<value>SFX/Footsteps/falltouch.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.13267573696145124</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{ff952033-915c-49ed-9554-0fd50e308e0d}</destination>
+		</relationship>
+	</object>
+</objects>
