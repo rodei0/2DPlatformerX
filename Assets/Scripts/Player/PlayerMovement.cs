@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] LayerMask groundLayer;
 
 
+
     [Header("Script References:")]
     private PlayerStateList pState;
     private PlayerVFX playerVFX;
@@ -38,6 +39,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("Footsteps sound")]
     private float footstepTimer = 0f;
     [SerializeField] private float footstepInterval = 0.3f; // Intervalo entre pasos en segundos
+
+    // Events
+    public static event System.Action OnJumpResetConsumed;
 
 
     #endregion
@@ -174,7 +178,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void JumpDouble() {
-        jumpResetting = true;
+        OnJumpResetConsumed?.Invoke();
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         pState.isJumping = true;
         

@@ -176,7 +176,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1251106889
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -2259941295348987598, guid: 14e723dc9b807004a81577a7165929c6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -226,6 +226,8 @@ MonoBehaviour:
   speed: 2
   originPoint: {fileID: 7765481895521427037}
   endPoint: {fileID: 9008251604305837584}
+  moveActivated: 1
+  isLooped: 1
 --- !u!114 &8928056226253252163
 MonoBehaviour:
   m_ObjectHideFlags: 0

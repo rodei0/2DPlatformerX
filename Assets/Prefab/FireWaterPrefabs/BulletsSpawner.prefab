@@ -13,7 +13,7 @@ GameObject:
   m_Layer: 0
   m_Name: BulletsSpawner
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -44,10 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d1d17daae95cb47a9a0784757d1c58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: 3
+  direction: 2
   bulletFirePrefab: {fileID: 5262807797089785144, guid: 925a16bf1b93d8e4fad4f53fc60c94da, type: 3}
   bulletWaterPrefab: {fileID: 205026039477186713, guid: 2a729e0ab8dab304fbc196ad52e37832, type: 3}
   spawnsWater: 0
-  spawnsFire: 0
+  spawnsFire: 1
   spawnRate: 3
   bulletSpeed: 5

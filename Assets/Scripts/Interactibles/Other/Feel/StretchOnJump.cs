@@ -3,25 +3,12 @@ using UnityEngine;
 
 public class StretchOnJump : MonoBehaviour
 {
-    private bool isStretching = false;
-
-
-    private void Awake() {
+   public void StretchCorroutine() {
+        StartCoroutine(StretchAnimCoroutine());
     }
-    private void OnTriggerStay2D(Collider2D collision) {
-        if (collision.CompareTag("Player")) {
-            PlayerMovement movement = collision.GetComponent<PlayerMovement>();
-            if (movement.jumpResetting && !isStretching) {
-                movement.jumpResetting = false;
-                StartCoroutine(StretchAnimCoroutine());
-                Debug.Log("Stretching!");
-            }
-        }
-    }
+
 
     private IEnumerator StretchAnimCoroutine() {
-        isStretching = true;
-
         Vector3 start = Vector3.one;
         Vector3 target = new Vector3(1.4f, 0.6f, 1f);
 
@@ -40,6 +27,5 @@ public class StretchOnJump : MonoBehaviour
         }
 
         transform.localScale = Vector3.one;
-        isStretching = false;
     }
 }

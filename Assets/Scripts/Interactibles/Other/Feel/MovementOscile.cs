@@ -35,7 +35,7 @@ public class MovementOscile : MonoBehaviour
 
     private void RotateOnZ() {
         float rotationZ = Mathf.Sin((Time.time + randomOffset) * oscileSpeedRot) * amplitudeRot;
-        transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
+        transform.localRotation = Quaternion.Euler(0f, 0f, rotationZ);
     }
 
 }

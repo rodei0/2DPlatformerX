@@ -20,4 +20,13 @@ public class Bullet : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.CompareTag("Ground") || collision.CompareTag("Player")) {
+            //codigo con animacion que se rompa (particulas mismo)
+            Destroy(this.gameObject, 0.01f);
+        }
+    }
+
 }

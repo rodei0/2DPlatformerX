@@ -31,9 +31,16 @@ public class PlayerVFX : MonoBehaviour
         pState = GetComponent<PlayerStateList>();
         fuego.Stop();
         agua.Stop();
-
+        FirstColor();
     }
 
+    //funcion para que el personaje empiece con el color de fuego y las particulas de fuego
+    private void FirstColor() {
+        StartCoroutine(ChangeColor(colorFire, 0.2f));
+        var main = dust.main;
+        main.startColor = colorFire;
+        fuego.Play();
+    }
     private IEnumerator SpawnFire() {
         dustFuego.Play();
         yield return new WaitForSeconds(0.5f);

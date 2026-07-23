@@ -28,6 +28,7 @@ public class DashGhost : MonoBehaviour
         ghost.transform.localScale = transform.localScale;
 
         SpriteRenderer ghostSR = ghost.AddComponent<SpriteRenderer>();
+        ghostSR.sortingLayerName = sr.sortingLayerName;
         ghostSR.sprite = sr.sprite;
         ghostSR.color = bodySr.color;
         ghostSR.enabled = true;

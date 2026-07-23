@@ -8,43 +8,45 @@ public class JumpResetObject : MonoBehaviour
     private LightOscile lightOscile;
      
     private ParticlesEffect particlesEffect;
-    
+    StretchOnJump stretchOnJump;
+
     private void Awake()
     {
         lightOscile = GetComponent<LightOscile>();
         particlesEffect = GetComponent<ParticlesEffect>();
+        stretchOnJump = GetComponent<StretchOnJump>();
     }
 
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void Jumped() {
+        stretchOnJump.StretchCorroutine();
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.jumpResetSFX, transform.position);
+        lightOscile.FadelightFunc();
+        particlesEffect.StopParticles();
+        canUse = false;
+        StartCoroutine(ResetUse());
+        PlayerMovement.OnJumpResetConsumed -= Jumped;
     }
-
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Player") && canUse)
         {
             PlayerMovement player = collision.GetComponent<PlayerMovement>();
             if (player != null)
             {
+                PlayerMovement.OnJumpResetConsumed += Jumped;
                 player.ResetJump();
-                AudioManager.Instance.PlayOneShot(FMODEvents.Instance.jumpResetSFX, transform.position);
-                lightOscile.FadelightFunc();
-                particlesEffect.StopParticles();
-                canUse = false;
-                StartCoroutine(ResetUse());
             }
         }
 
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
-        if (collision.CompareTag("Player") && !canUse)
+        if (collision.CompareTag("Player"))
         {
             PlayerMovement player = collision.GetComponent<PlayerMovement>();
             if (player != null) {
                 player.unResetJump();
+                PlayerMovement.OnJumpResetConsumed -= Jumped;
             }
         }
 
