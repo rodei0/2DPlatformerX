@@ -49,26 +49,15 @@ public class PlayerMovement : MonoBehaviour
     #region Unity Methods
 
     private void Awake() {
-        playerControls = new PlayerControls();
-        playerControls.Enable();
-    }
 
-    private void OnEnable() {
-        if (playerControls != null)
-            playerControls.Enable();
-    }
-
-    private void OnDisable() {
-        if (playerControls != null)
-            playerControls.Disable();
-    }
-
-    void Start() {
-        //sr = GetComponent<SpriteRenderer>(); reemplazado por 2 sprites
         pState = GetComponent<PlayerStateList>();
         rb = GetComponent<Rigidbody2D>();
         //animator = GetComponent<Animator>(); reemplazado por 2 anims para cabeza y cuerpo, por lo que se asignan manualmente en el inspector
         playerVFX = GetComponent<PlayerVFX>();
+    }
+
+    void Start() {
+        playerControls = InputManager.Instance.PlayerControls;
     }
 
     // Update is called once per frame

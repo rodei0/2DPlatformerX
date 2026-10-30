@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BulletSpawn : MonoBehaviour
 {
@@ -28,9 +30,11 @@ public class BulletSpawn : MonoBehaviour
 
     private GameObject gameObjectChoosed;
 
+    private Vector3 startScale;
     private float timer;
     void Start()
     {
+        startScale = transform.localScale;
         directionVector = chooseDirection(direction);
         directionRotation = chooseRotation(direction);
         if (spawnsWater) {
@@ -49,25 +53,37 @@ public class BulletSpawn : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
+        SpawnBullets();
     }
 
     private void FixedUpdate() {
 
-        SpawnBullets();
     }
 
 
     private void SpawnBullets() {
-       if (timer >= spawnRate) {
+        if (timer >= spawnRate) {
                 GameObject bullet = Instantiate(gameObjectChoosed, transform.position, directionRotation);
+                AudioManager.Instance.PlayOneShot(FMODEvents.Instance.shootSFX, transform.position);
                 Bullet bulletScript = bullet.GetComponent<Bullet>();
                 bulletScript.direction = directionVector;
                 bulletScript.speed = bulletSpeed;
-            timer = 0f;
+            timer = 0f;   
+            StartCoroutine(ShootAnimation());
         }
-
     }
-    
+
+    private IEnumerator ShootAnimation() {
+        float transitionTime = 0.1f; // Time taken for the bullet to reach its full speed
+        float t = 0;
+        while (t < transitionTime) {
+            t += Time.deltaTime;
+            transform.localScale = Vector3.Lerp(startScale, new Vector3(2f, 1, 1), t / transitionTime);
+            transform.localScale = Vector3.Lerp(new Vector3(2f, 1, 1), startScale, t / transitionTime);
+            yield return null;
+        }
+    }
+
     private Vector2 chooseDirection(Direction direction) {
         switch(direction) {
             case Direction.Up:

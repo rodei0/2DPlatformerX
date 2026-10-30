@@ -3,7 +3,9 @@ using UnityEngine;
 public class DoorScript : MonoBehaviour
 {
     private Animator animator;
+    [SerializeField] private AnimationClip openClip;
     private Collider2D coll;
+
 
     public bool keepOpen = false;
     void Start() {
@@ -19,8 +21,10 @@ public class DoorScript : MonoBehaviour
     }
 
     public void CloseDoor() {
+        if (animator != null) {
             animator.SetBool("isOpened", false);
             coll.isTrigger = false;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {

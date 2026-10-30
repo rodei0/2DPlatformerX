@@ -25,7 +25,7 @@ public class PlayerVFX : MonoBehaviour
     [Header("Script References:")]
     private PlayerStateList pState;
     private PlayerManagement playerManagement;
-    void Start()
+    void Awake()
     {
         playerManagement = GetComponent<PlayerManagement>();
         pState = GetComponent<PlayerStateList>();

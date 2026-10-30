@@ -9,9 +9,14 @@ public class ButtonScript : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        PlayerManagement.OnPlayerDeath += Reset;
     }
 
+    private void OnEnable() {
+        PlayerManagement.OnPlayerDeath += Reset;
+    }
+    private void OnDisable() {
+        PlayerManagement.OnPlayerDeath -= Reset;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (activated) return;
@@ -35,7 +40,9 @@ public class ButtonScript : MonoBehaviour
 
         if (!allDoorsRemainOpen) {
             activated = false;
-            animator.SetBool("isPressed", false);
+            if (animator != null) {
+                animator.SetBool("isPressed", false);
+            }
         }
     }
 }

@@ -1,0 +1,192 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3492268099340229496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7048109383743434871}
+  - component: {fileID: 6114226993759836534}
+  m_Layer: 0
+  m_Name: FMODEvents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7048109383743434871
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3492268099340229496}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3617097315087208133}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6114226993759836534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3492268099340229496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8286fbbacc6bf9b4485b3e1282b039a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <jumpSFX>k__BackingField:
+    Guid:
+      Data1: -1188542926
+      Data2: 1226086231
+      Data3: -1569548626
+      Data4: -963546296
+    Path: event:/Player/Jump
+  <dashSFX>k__BackingField:
+    Guid:
+      Data1: 1051584765
+      Data2: 1154640902
+      Data3: 2105121704
+      Data4: -587594826
+    Path: event:/Player/Dash
+  <swapElementSFX>k__BackingField:
+    Guid:
+      Data1: 1299933036
+      Data2: 1238714146
+      Data3: 1073703578
+      Data4: 1306001370
+    Path: event:/Player/SwapElement
+  <hittedSFX>k__BackingField:
+    Guid:
+      Data1: 1363196948
+      Data2: 1179379381
+      Data3: -1349472612
+      Data4: -924872395
+    Path: event:/Player/Hit
+  <resetDashSFX>k__BackingField:
+    Guid:
+      Data1: 1999641937
+      Data2: 1148778440
+      Data3: -2053205359
+      Data4: -2001114113
+    Path: event:/Player/ResetDash
+  <touchWaterSFX>k__BackingField:
+    Guid:
+      Data1: 1599200544
+      Data2: 1339161791
+      Data3: -1773434999
+      Data4: -1717407979
+    Path: event:/Player/TouchWater
+  <jumpResetSFX>k__BackingField:
+    Guid:
+      Data1: 347281724
+      Data2: 1321813653
+      Data3: -1024984683
+      Data4: 1797983915
+    Path: event:/Player/JumpReset
+  <footstepsSFX>k__BackingField:
+    Guid:
+      Data1: -1400090698
+      Data2: 1081878328
+      Data3: -1838046846
+      Data4: 97839907
+    Path: event:/Player/Footsteps
+  <fallTouchFloor>k__BackingField:
+    Guid:
+      Data1: 920947953
+      Data2: 1228879488
+      Data3: -1767733887
+      Data4: 1201740738
+    Path: event:/Player/FallIntoGround
+  <checkPointTouch>k__BackingField:
+    Guid:
+      Data1: 277019893
+      Data2: 1218691854
+      Data3: -893012306
+      Data4: -631255675
+    Path: event:/OtherSFX/CheckPoint
+  <buttonTouch>k__BackingField:
+    Guid:
+      Data1: -1001044100
+      Data2: 1300376666
+      Data3: 66846654
+      Data4: -1465299315
+    Path: event:/OtherSFX/ButtonPress
+  <doorOpened>k__BackingField:
+    Guid:
+      Data1: 762318352
+      Data2: 1175348609
+      Data3: 226339214
+      Data4: -425528587
+    Path: event:/OtherSFX/DoorOpened
+  <shootSFX>k__BackingField:
+    Guid:
+      Data1: 1109211283
+      Data2: 1294479057
+      Data3: 2062894269
+      Data4: -1789857042
+    Path: event:/OtherSFX/ShootSFX
+  <bulletHitWall>k__BackingField:
+    Guid:
+      Data1: -951768680
+      Data2: 1123570503
+      Data3: -1604185922
+      Data4: 585733820
+    Path: event:/OtherSFX/BulletHitWall
+--- !u!1 &4112512237402266214
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3617097315087208133}
+  - component: {fileID: 3050432313985164033}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3617097315087208133
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4112512237402266214}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7048109383743434871}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3050432313985164033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4112512237402266214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78547a814719dfd4999a120627256985, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masterVolume: 1
+  musicVolume: 0.5
+  sfxVolume: 1

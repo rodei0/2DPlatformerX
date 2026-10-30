@@ -21,7 +21,7 @@ public class MovementOscile : MonoBehaviour
     private Vector2 startPos;
 
     private void Awake() {
-        startPos = transform.position;
+        startPos = transform.localPosition;
         randomOffset = Random.Range(0f, 100f);
     }
     private void Update() {
@@ -30,7 +30,7 @@ public class MovementOscile : MonoBehaviour
     }
     private void MoveUpAndDown() {
         float offsetY = Mathf.Sin((Time.time + randomOffset) * oscileSpeed) * amplitude;
-        transform.position = new Vector2(startPos.x,startPos.y + offsetY);
+        transform.localPosition = new Vector2(startPos.x,startPos.y + offsetY);
     }
 
     private void RotateOnZ() {

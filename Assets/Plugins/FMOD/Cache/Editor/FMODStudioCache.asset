@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9168581029537380157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/OtherSFX/CheckPoint
+  m_EditorClassIdentifier: 
+  Path: event:/OtherSFX/CheckPoint
+  Guid:
+    Data1: 277019893
+    Data2: 1218691854
+    Data3: -893012306
+    Data4: -631255675
+  Banks:
+  - {fileID: -7065907978028669626}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-8926367233931890742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54,6 +81,60 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-7385770460923673022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/OtherSFX/ChangeScene
+  m_EditorClassIdentifier: 
+  Path: event:/OtherSFX/ChangeScene
+  Guid:
+    Data1: 2013182872
+    Data2: 1286888480
+    Data3: -1470554198
+    Data4: 727811683
+  Banks:
+  - {fileID: -7065907978028669626}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-7200212818936813650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/OtherSFX/TextAppearing
+  m_EditorClassIdentifier: 
+  Path: event:/OtherSFX/TextAppearing
+  Guid:
+    Data1: 588396335
+    Data2: 1195249565
+    Data3: -158299756
+    Data4: 1431260521
+  Banks:
+  - {fileID: -7065907978028669626}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-7065907978028669626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,10 +150,10 @@ MonoBehaviour:
   Path: FMODProject/project/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 639204365376321763
+  lastModified: 639279524440660792
   FileSizes:
   - Name: Desktop
-    Value: 119040
+    Value: 195808
   Exists: 1
 --- !u!114 &-7046151849910654995
 MonoBehaviour:
@@ -116,12 +197,12 @@ MonoBehaviour:
   Path: FMODProject/project/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639204365375607961
+  lastModified: 639279487300101756
   FileSizes:
   - Name: Desktop
-    Value: 1418
+    Value: 1720
   Exists: 1
---- !u!114 &-6231230660039959968
+--- !u!114 &-5094917549857201664
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,14 +212,41 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/DoorOpened
+  m_Name: event:/OtherSFX/BulletHitWall
   m_EditorClassIdentifier: 
-  Path: event:/DoorOpened
+  Path: event:/OtherSFX/BulletHitWall
   Guid:
-    Data1: 762318352
-    Data2: 1175348609
-    Data3: 226339214
-    Data4: -425528587
+    Data1: -951768680
+    Data2: 1123570503
+    Data3: -1604185922
+    Data4: 585733820
+  Banks:
+  - {fileID: -7065907978028669626}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-4674558867745077858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/OtherSFX/ButtonPress
+  m_EditorClassIdentifier: 
+  Path: event:/OtherSFX/ButtonPress
+  Guid:
+    Data1: -1001044100
+    Data2: 1300376666
+    Data3: 66846654
+    Data4: -1465299315
   Banks:
   - {fileID: -7065907978028669626}
   IsStream: 0
@@ -276,16 +384,22 @@ MonoBehaviour:
   - {fileID: -8926367233931890742}
   - {fileID: -3258580748439608439}
   - {fileID: 2908493596408927895}
-  - {fileID: 5655266714408067992}
-  - {fileID: 309948634262333329}
-  - {fileID: -6231230660039959968}
+  - {fileID: 1304707605906922960}
+  - {fileID: -4674558867745077858}
+  - {fileID: -9168581029537380157}
+  - {fileID: 3112555581954381148}
+  - {fileID: -5094917549857201664}
+  - {fileID: -7200212818936813650}
+  - {fileID: -7385770460923673022}
+  - {fileID: 3485086235850905800}
+  - {fileID: 6481634497310867828}
   EditorParameters: []
   MasterBanks:
   - {fileID: 3855853502754009443}
   StringsBanks:
   - {fileID: -7026804953237257199}
   cacheVersion: 131858
-  cacheTime: 639204365376321763
+  cacheTime: 639279524440660792
   SerializableEventsDict:
   - key: event:/Player/Dash
     index: 0
@@ -305,13 +419,25 @@ MonoBehaviour:
     index: 7
   - key: event:/Player/FallIntoGround
     index: 8
-  - key: event:/CheckPoint
+  - key: event:/OtherSFX/DoorOpened
     index: 9
-  - key: event:/ButtonPress
+  - key: event:/OtherSFX/ButtonPress
     index: 10
-  - key: event:/DoorOpened
+  - key: event:/OtherSFX/CheckPoint
     index: 11
---- !u!114 &309948634262333329
+  - key: event:/OtherSFX/ShootSFX
+    index: 12
+  - key: event:/OtherSFX/BulletHitWall
+    index: 13
+  - key: event:/OtherSFX/TextAppearing
+    index: 14
+  - key: event:/OtherSFX/ChangeScene
+    index: 15
+  - key: event:/OtherSFX/ButtonClicked
+    index: 16
+  - key: event:/OtherSFX/GoBackMenu
+    index: 17
+--- !u!114 &1304707605906922960
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -321,14 +447,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/ButtonPress
+  m_Name: event:/OtherSFX/DoorOpened
   m_EditorClassIdentifier: 
-  Path: event:/ButtonPress
+  Path: event:/OtherSFX/DoorOpened
   Guid:
-    Data1: -1001044100
-    Data2: 1300376666
-    Data3: 66846654
-    Data4: -1465299315
+    Data1: 762318352
+    Data2: 1175348609
+    Data3: 226339214
+    Data4: -425528587
   Banks:
   - {fileID: -7065907978028669626}
   IsStream: 0
@@ -356,6 +482,60 @@ MonoBehaviour:
     Data2: 1228879488
     Data3: -1767733887
     Data4: 1201740738
+  Banks:
+  - {fileID: -7065907978028669626}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &3112555581954381148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/OtherSFX/ShootSFX
+  m_EditorClassIdentifier: 
+  Path: event:/OtherSFX/ShootSFX
+  Guid:
+    Data1: 1109211283
+    Data2: 1294479057
+    Data3: 2062894269
+    Data4: -1789857042
+  Banks:
+  - {fileID: -7065907978028669626}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 380
+--- !u!114 &3485086235850905800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/OtherSFX/ButtonClicked
+  m_EditorClassIdentifier: 
+  Path: event:/OtherSFX/ButtonClicked
+  Guid:
+    Data1: 2045702405
+    Data2: 1203497606
+    Data3: 465054133
+    Data4: -1255201036
   Banks:
   - {fileID: -7065907978028669626}
   IsStream: 0
@@ -407,7 +587,7 @@ MonoBehaviour:
   Path: FMODProject/project/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639204365375597852
+  lastModified: 639279487300091748
   FileSizes:
   - Name: Desktop
     Value: 1378
@@ -439,7 +619,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &5655266714408067992
+--- !u!114 &6481634497310867828
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -449,14 +629,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/CheckPoint
+  m_Name: event:/OtherSFX/GoBackMenu
   m_EditorClassIdentifier: 
-  Path: event:/CheckPoint
+  Path: event:/OtherSFX/GoBackMenu
   Guid:
-    Data1: 277019893
-    Data2: 1218691854
-    Data3: -893012306
-    Data4: -631255675
+    Data1: 303159231
+    Data2: 1293996119
+    Data3: 2020214718
+    Data4: -1029914537
   Banks:
   - {fileID: -7065907978028669626}
   IsStream: 0

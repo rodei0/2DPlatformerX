@@ -13,8 +13,6 @@ public class CameraShake : MonoBehaviour
         else
             Destroy(gameObject);
     }
-    void Start() {
-    }
 
     public void Shake(float duration, float magnitude) {
         if (shakeCoroutine != null) {
@@ -27,6 +25,10 @@ public class CameraShake : MonoBehaviour
         float elapsed = 0f;
 
         while (elapsed < duration) {
+            if (Time.timeScale == 0f) {   // pausado: se queda quieto
+                yield return null;
+                continue;
+            }
             float offsetX = Random.Range(-1f, 1f) * magnitude;
             float offsetY = Random.Range(-1f, 1f) * magnitude;
 

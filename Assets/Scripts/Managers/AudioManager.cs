@@ -38,9 +38,9 @@ public class AudioManager : MonoBehaviour
 
     private void Update()
     {
-        masterBus.setVolume(masterVolume);
-        musicBus.setVolume(musicVolume);
-        sfxBus.setVolume(sfxVolume);
+        masterBus.setVolume(SaveManager.Instance.Data.masterVolume);
+        musicBus.setVolume(SaveManager.Instance.Data.musicVolume);
+        sfxBus.setVolume(SaveManager.Instance.Data.sfxVolume);
 
         //if (!musicStarted && Input.anyKeyDown)
         //{
@@ -53,6 +53,7 @@ public class AudioManager : MonoBehaviour
         masterBus = RuntimeManager.GetBus("bus:/");
         musicBus = RuntimeManager.GetBus("bus:/Music");
         sfxBus = RuntimeManager.GetBus("bus:/SFX");
+        Debug.Log($"Master valid: {masterBus.isValid()} | Music valid: {musicBus.isValid()} | SFX valid: {sfxBus.isValid()}");
     }
 
     public void PlayOneShot(EventReference sound, Vector3 position)

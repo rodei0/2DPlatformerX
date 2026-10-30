@@ -24,8 +24,12 @@ public class PlayerManagement : MonoBehaviour
     [Header("BlackTransition")]
     [SerializeField] private float durationTransition = 0.5f;
     [SerializeField] private Image blackTransition;
+
+    private CheckPoint[] checkpoints;
     void Awake()
     {
+        checkpoints = FindObjectsByType<CheckPoint>(FindObjectsSortMode.None);
+        FindActualCheckpoint();
         rb = GetComponent<Rigidbody2D>();
         playerMovement = GetComponent<PlayerMovement>();
         dashGhost = GetComponent<DashGhost>();
@@ -36,19 +40,29 @@ public class PlayerManagement : MonoBehaviour
         col = GetComponent<Collider2D>();
     }
 
+    private void OnEnable() {
+        blackTransition.color = new Color(0, 0, 0, 1);
+        StartCoroutine(TransitionBlack());
+    }
 
     public void SetRespawnPoint(Vector3 newRespawnPoint) {
         respawn.position = newRespawnPoint;
     }
 
-    public void SetBaseCharElement() {
-
+    public void FindActualCheckpoint() {
+        foreach (CheckPoint checkpoint in checkpoints) {
+            if (checkpoint.checkpointName == SaveManager.Instance.Data.lastCheckpoint) {
+                respawn.position = checkpoint.transform.position;
+                transform.position = checkpoint.transform.position;
+                return;
+            }
+        }
     }
 
     private IEnumerator PlayerDead() {
+        SaveManager.Instance.AddDeathCount();
         AudioManager.Instance.StopAllSFX();
         AudioManager.Instance.PlayOneShot(FMODEvents.Instance.hittedSFX, transform.position);
-        OnPlayerDeath?.Invoke();
         pState.isDead = true;
         playerDash.ResetDashState();
         dashGhost.StopSpawning();
@@ -71,21 +85,25 @@ public class PlayerManagement : MonoBehaviour
         yield return new WaitForSeconds(0.15f);
         SetPlayerVisible(true);
 
-
         float t = 0;
         while (t < durationTransition) {
-            t+= Time.deltaTime;
+            t += Time.deltaTime;
             blackTransition.color = new Color(0, 0, 0, Mathf.Lerp(0, 1, t / durationTransition));
             yield return null;
         }
+        OnPlayerDeath?.Invoke();
         RecoverPlayer();
-        t = 0;
+        StartCoroutine(TransitionBlack());
+
+    }
+
+    private IEnumerator TransitionBlack() {
+        float t = 0;
         while (t < durationTransition) {
-            t+= Time.deltaTime;
+            t += Time.deltaTime;
             blackTransition.color = new Color(0, 0, 0, Mathf.Lerp(1, 0, t / durationTransition));
             yield return null;
         }
-
     }
 
     private void RecoverPlayer() {

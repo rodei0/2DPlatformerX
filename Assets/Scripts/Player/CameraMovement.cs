@@ -51,7 +51,9 @@ public class CameraMovement : MonoBehaviour
         transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -10);
         }
 
-        LimitCamera();
+        if (leftLimit != null && rightLimit != null && upLimit != null && downLimit != null) {
+            LimitCamera();
+        }
 
     }
 

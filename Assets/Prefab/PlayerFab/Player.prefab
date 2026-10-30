@@ -34250,8 +34250,6 @@ GameObject:
   - component: {fileID: 6658625321824519836}
   - component: {fileID: 8318515259224397050}
   - component: {fileID: 1246044327215383397}
-  - component: {fileID: 4860638077573870404}
-  - component: {fileID: 7800146474826515053}
   - component: {fileID: 3800137225349612652}
   m_Layer: 6
   m_Name: Player
@@ -34321,7 +34319,7 @@ MonoBehaviour:
   jumpForce: 14
   maxFallSpeed: 14
   jumpBufferFrames: 6
-  coyoteTime: 0.15
+  coyoteTime: 0.3
   jumpResetting: 0
   headAnim: {fileID: 4717632030939530597}
   bodyAnim: {fileID: 1723850897384164979}
@@ -34361,7 +34359,9 @@ MonoBehaviour:
   respawn: {fileID: 0}
   srBody: {fileID: 1240170387916753056}
   srHead: {fileID: 5248788997484260436}
-  actualColor: {r: 0, g: 0, b: 0, a: 0}
+  actualColor: {r: 1, g: 1, b: 1, a: 1}
+  durationTransition: 0.25
+  blackTransition: {fileID: 0}
 --- !u!114 &6184380388818518953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34411,7 +34411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashingHorizontalMultiplier: 1
-  dashingVerticalMultiplier: 0.6
+  dashingVerticalMultiplier: 0.63
   dashingPower: 14
   dashingTime: 0.2
   dashingCd: 0.02
@@ -34489,65 +34489,6 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!95 &4860638077573870404
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7768020056930020590}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fa86de1099ebfa240aa47e218e7c3725, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!70 &7800146474826515053
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7768020056930020590}
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: -0.04, y: -0.46}
-  m_Size: {x: 0.22, y: 0.08}
-  m_Direction: 1
 --- !u!212 &3800137225349612652
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -34589,8 +34530,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1943794167
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 363132489, guid: d61ec499457f81a47babcdcafc5bfbfb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
