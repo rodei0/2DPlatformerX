@@ -13,8 +13,8 @@ public class PlayerMovement : MonoBehaviour
     private bool hasExtraJump;
 
     //buffer jump
-    private int jumpBufferCounter = 0;
-    [SerializeField] private int jumpBufferFrames;
+    private float jumpBufferCounter = 0;
+    [SerializeField] private float jumpBufferTime = 0.1f;
 
     [SerializeField] private float coyoteTime = 0.15f;
     private float horizontal;
@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else {
                 Debug.Log("Jump Button Pressed");
-                jumpBufferCounter = jumpBufferFrames;
+                jumpBufferCounter = jumpBufferTime;
             }
         }
 
@@ -198,10 +198,10 @@ public class PlayerMovement : MonoBehaviour
                 pState.canDash = true;
             }
         } else { 
-            pState.coyoteCounter -= Time.fixedDeltaTime;
+            pState.coyoteCounter -= Time.deltaTime;
             pState.wasinAir = true;
         }
-        if (jumpBufferCounter > 0) { jumpBufferCounter--;}
+        if (jumpBufferCounter > 0) { jumpBufferCounter -= Time.deltaTime;}
         
         
     }
