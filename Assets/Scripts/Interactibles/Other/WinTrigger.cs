@@ -6,6 +6,7 @@ public class WinTrigger : MonoBehaviour
         if (collision.CompareTag("Player")) {
             SaveManager.Instance.HasCompletedGame();
             IngameMenu.Instance.OnWinMenu();
+            AudioManager.Instance.PlayOneShot(FMODEvents.Instance.winSFX, transform.position);
         }
     }
 }

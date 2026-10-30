@@ -150,10 +150,10 @@ MonoBehaviour:
   Path: FMODProject/project/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 639279524440660792
+  lastModified: 639289746964440262
   FileSizes:
   - Name: Desktop
-    Value: 195808
+    Value: 239392
   Exists: 1
 --- !u!114 &-7046151849910654995
 MonoBehaviour:
@@ -197,10 +197,10 @@ MonoBehaviour:
   Path: FMODProject/project/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639279487300101756
+  lastModified: 639289746962380668
   FileSizes:
   - Name: Desktop
-    Value: 1720
+    Value: 1756
   Exists: 1
 --- !u!114 &-5094917549857201664
 MonoBehaviour:
@@ -393,13 +393,14 @@ MonoBehaviour:
   - {fileID: -7385770460923673022}
   - {fileID: 3485086235850905800}
   - {fileID: 6481634497310867828}
+  - {fileID: 2702779195202659169}
   EditorParameters: []
   MasterBanks:
   - {fileID: 3855853502754009443}
   StringsBanks:
   - {fileID: -7026804953237257199}
   cacheVersion: 131858
-  cacheTime: 639279524440660792
+  cacheTime: 639289746964440262
   SerializableEventsDict:
   - key: event:/Player/Dash
     index: 0
@@ -437,6 +438,8 @@ MonoBehaviour:
     index: 16
   - key: event:/OtherSFX/GoBackMenu
     index: 17
+  - key: event:/OtherSFX/WinSFX
+    index: 18
 --- !u!114 &1304707605906922960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,6 +458,33 @@ MonoBehaviour:
     Data2: 1175348609
     Data3: 226339214
     Data4: -425528587
+  Banks:
+  - {fileID: -7065907978028669626}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &2702779195202659169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/OtherSFX/WinSFX
+  m_EditorClassIdentifier: 
+  Path: event:/OtherSFX/WinSFX
+  Guid:
+    Data1: 917560390
+    Data2: 1187483778
+    Data3: -1255356776
+    Data4: 1140513179
   Banks:
   - {fileID: -7065907978028669626}
   IsStream: 0
@@ -587,7 +617,7 @@ MonoBehaviour:
   Path: FMODProject/project/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639279487300091748
+  lastModified: 639289746962380668
   FileSizes:
   - Name: Desktop
     Value: 1378

@@ -27,6 +27,7 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference changeScene { get; private set; }
     [field: SerializeField] public EventReference buttonClickedUI { get; private set; }
     [field: SerializeField] public EventReference goBackMenu { get; private set; }
+    [field: SerializeField] public EventReference winSFX { get; private set; }
 
 
 
