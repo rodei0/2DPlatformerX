@@ -1,7 +1,8 @@
 # Platformer2D (nombre temporal)
 Vertical slice de un platformer 2D hecho en Unity, centrado en el game feel y la precisión del control.
 
-![gameplay](docs/Gameplay.gif)
+![gameplay](docs/GameplayGif.gif)
+![rebind](docs/RebindSettingsGif.gif)
 
 ## Features
 
