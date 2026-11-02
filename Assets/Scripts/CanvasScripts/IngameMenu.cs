@@ -102,6 +102,7 @@ public class IngameMenu : MonoBehaviour
 
     public void OnExitClicked() {
         SceneManager.LoadScene(0);
+        isWinScreen = false;
         ingameMenu.SetActive(false);
     }
 
