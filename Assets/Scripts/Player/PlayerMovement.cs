@@ -90,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
 
         horizontal = Mathf.Round(playerControls.Player.Move.ReadValue<Vector2>().x);
 
-        if (playerControls.Player.ChangeElement.WasPressedThisFrame()) {
+        if (playerControls.Player.ChangeElement.WasPressedThisFrame() && !IngameMenu.Instance.isPaused) {
             playerVFX.ChangeParticles();
         }
 
