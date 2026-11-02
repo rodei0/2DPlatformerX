@@ -6,5 +6,6 @@ public static class FPSLimiter
     private static void Init() {
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 240;
+        FullScreenMode currentFullScreenMode = Screen.fullScreenMode;
     }
 }

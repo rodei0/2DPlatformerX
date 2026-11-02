@@ -135,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
             jumpReleased = false;
         }
 
-        if (!pState.isJumping && !pState.isDashing) {
+        if (!pState.isJumping && !pState.isDashing && !pState.isDead) {
             if (jumpBufferCounter > 0 && pState.coyoteCounter > 0) {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
                 pState.coyoteCounter = 0;
@@ -222,6 +222,9 @@ public class PlayerMovement : MonoBehaviour
         playerControls.Enable();
     }
     private void Flip() {
+        if (IngameMenu.Instance != null && IngameMenu.Instance.isPaused) {
+            return;
+        }
         if ((pState.isFacingRight && horizontal < 0f) || !pState.isFacingRight && horizontal > 0f) {
             pState.isFacingRight = !pState.isFacingRight;
             Vector3 localScale = transform.localScale;

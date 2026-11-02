@@ -14,7 +14,7 @@ public class IngameMenu : MonoBehaviour
 
 
     private bool isWinScreen = false;
-    private bool isPaused;
+    public bool isPaused;
     private bool endedTransition = false;
 
     private bool isMainMenuScene => SceneManager.GetActiveScene().buildIndex == 0;

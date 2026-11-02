@@ -45,6 +45,7 @@ public class PlayerManagement : MonoBehaviour
         StartCoroutine(TransitionBlack());
     }
 
+
     public void SetRespawnPoint(Vector3 newRespawnPoint) {
         respawn.position = newRespawnPoint;
     }
